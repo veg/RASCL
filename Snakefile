@@ -27,9 +27,9 @@ GISAID_WG = "gisaid_hcov-19_2021_05_14_19.fasta"
 INPUT_WG = os.path.join(BASEDIR, "data/" + LABEL + "/" + GISAID_WG)
 print("# INPUT GISAID FILE:", INPUT_WG)
 
-#genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
 # for debugging or single gene analyses
-genes = ["S"]
+#genes = ["S"]
 
 # Load config.json settings -------------------------------------------
 REF_SEQ_DIR = os.path.join(BASEDIR, "data/ReferenceSeq")

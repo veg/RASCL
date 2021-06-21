@@ -2,7 +2,7 @@ errors*
 torque*
 
 .snakemake*
-
+.*.swp
 
 data/results
 

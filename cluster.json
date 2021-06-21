@@ -1,0 +1,6 @@
+{"__default__": 
+  {
+  "cluster" : "qsub",
+  "nodes": 1,
+  "ppn": 8
+}}

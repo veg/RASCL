@@ -1,0 +1,11 @@
+errors*
+torque*
+
+.snakemake*
+
+
+data/results
+
+results/TEST
+
+data/TEST/*

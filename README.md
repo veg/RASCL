@@ -1,9 +1,9 @@
 ## RASCL: RAPID ASSESSMENT OF SARS-COV-2 CLADES THROUGH MOLECULAR SEQUENCE ANALYSIS
 
 ### Overview
-This pipeline is designed to use molecular sequence data from genotypically distinct viral lineages of Sars-CoV-2 to identify distinguishing features and distinguishing evolution between lineages.
-Using either whole genomes or singular gene data, a "query" set of sequences will be compared to against a "reference" set of data. The reference data set contains globally ciruculating Sars-CoV-2 sequences, and the query data set is the set of sequences you want to compare against the reference.
-The pipeline uses open-source tools, as well as selection analysis tools from [HyPhy](hyphy.org), and assembles the results from the analysis into a monolithic JSON file which can then be visualized with an [Observable notebook](whichone?.org)
+This application is designed to use molecular sequence data from genotypically distinct viral lineages of SARS-CoV-2 to identify distinguishing features and evolution within lineages.
+Using whole genomes, a "query" set of sequences will be compared to against a globally diverse set of "background" sequences. The background data set contains globally circulating SARS-CoV-2 sequences, and the query data set is the set of sequences you want to compare.
+The application uses a number of open-source tools, as well as selection analysis tools from [HyPhy](hyphy.org), and assembles the results from the analysis into JSON files which can then be visualized with our full feature [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades)
 
 ### Installation
 *There is an assumption that [ANACONDA](https://anaconda.org/) is installed on your machine*

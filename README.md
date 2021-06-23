@@ -37,7 +37,7 @@ At this point, run `conda activate rascl` and your env will be ready to go. Next
 
 #### If you are running on the server then run:
 ```
-snakemake -s Snakefile --cluster "qsub -V -l nodes=1:ppn=8 -q epyc2 -l walltime=999:00:00" --jobs 50 all --rerun-incomplete --keep-going
+snakemake -s Snakefile --cluster "qsub -V -l nodes=1:ppn=8 -q epyc2 -l walltime=999:00:00" --jobs 50 all --rerun-incomplete --keep-going -use-conda
 ```
 
 

@@ -5,5 +5,4 @@
   "max_query":"500",
   "threshold_query":"0.0005",
   "threshold_ref":"0.0005"
-  
 }

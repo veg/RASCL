@@ -1,9 +1,5 @@
-# Snakemake pipeline for SARS-CoV-2 clades analysis.
+# Snakefile for SARS-CoV-2 clades analysis.
 # @Author: Alexander Lucaci, Jordan Zehr, Stephen Shank
-
-
-# @Usage on hpc:
-# (Current) snakemake -s Snakefile --cluster "qsub -V -l nodes=1:ppn=8 -q epyc2 -l walltime=999:00:00" --jobs 50 all --rerun-incomplete --keep-going
 
 # HELPFUL
 ### !!! double `{` becomes escapes --> {{this}} 
@@ -48,10 +44,9 @@ print(f"INPUT_WG: {INPUT_WG}")
 
 # End -- User defined settings ----------------------------------------
 
-#genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
 # for debugging or single gene analyses
-genes = ["S"]
-
+#genes = ["S"]
 
 # Reference sequence dirs
 REF_SEQ_DIR = os.path.join(BASEDIR, "data/ReferenceSeq")
@@ -262,12 +257,10 @@ rule annotate:
        "bash scripts/annotate.sh {input.in_tree} 'REFERENCE' {input.in_compressed_fas} {LABEL} {BASEDIR}"
 #end rule annotate
     
-
 ######################################################################
 #---------------------Selection analyses ----------------------------#
 ######################################################################
 
-## 
 rule slac:
     input:
         in_msa = rules.combine.output.output,

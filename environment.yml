@@ -1,0 +1,13 @@
+name: RASCL
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  - biopython=1.78
+  - hyphy=2.5.31 
+  - raxml-ng=1.0.2 
+  - snakemake=5.3
+  - stephenshank::tn93=1.0.7
+  - python-bioext=0.19.7

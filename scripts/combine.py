@@ -5,6 +5,7 @@ import argparse
 import json
 import shutil
 import csv
+import Bio
 from Bio import SeqIO
 
 # Declares
@@ -14,7 +15,7 @@ arguments.add_argument('-i', '--input',            help = 'MSA file to process',
 arguments.add_argument('-o', '--output_fasta',           help = 'Output json file',                                     required = True, type = str)
 arguments.add_argument('-m', '--msa',              help = 'Distance threshold for clustering query sequences',    required = True, type = str)
 arguments.add_argument('--threshold',              help = 'Distance threshold for clustering query sequences',    required = True, type = float)
-arguments.add_argument('-r', '--reference_seq',    help = 'The maximum number of sequences to retain',               required = False, type = str)
+arguments.add_argument('-r', '--reference_seq',    help = 'Wuhan reference sequence',               required = False, type = str)
 settings = arguments.parse_args()
 
 # Output is {GENE}.combined.fas
@@ -43,7 +44,8 @@ ref_msa = settings.msa #reference.msa.SA, settings.msa
 # Software
 # Need to load this from a config.json file.
 task_runners = {}
-task_runners['tn93'] = "/usr/local/bin/tn93"
+#task_runners['tn93'] = "/usr/local/bin/tn93"
+task_runners['tn93'] = "tn93"
 
 # Helper functions
 def run_command (exec, arguments, filename, tag):
@@ -77,6 +79,9 @@ with open(tn93_pairwise_calcs) as fh:
 # Copy query_compressed to output .combined.fas
 shutil.copy (query_compressed, combined_msa)
 
+ADD_REF = False
+REF_SEQ = ""
+
 # Open .combined.fas to add the close reference sequences to it.
 with open (combined_msa, "a+") as fh:
     check_uniq = set ()
@@ -85,6 +90,7 @@ with open (combined_msa, "a+") as fh:
             if seq_record.name == _ref_seq_name:
                 print ("\n>%s\n%s" % ("REFERENCE", str(seq_record.seq)), file = fh)
                 check_uniq.add ('REFERENCE')
+                ADD_REF = True
             else:
                 seq_id = seq_record.name
                 while seq_id in check_uniq:
@@ -99,8 +105,14 @@ with open (combined_msa, "a+") as fh:
 
 #os.remove (pairwise)
 #input_stamp = os.path.getmtime(combined_msa)
-    
- 
+  
+if ADD_REF == False:
+    # Add the reference
+    #with open (combined_msa, "a+") as fh:
+    #    print ("\n>%s\n%s" % ("REFERENCE", str(REF_SEQ)), file = fh)
+    #shutil.copy (settings.reference_seq, combined_msa)
+    pass
+
 sys.exit(0)
         
 # End of file

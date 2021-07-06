@@ -1,8 +1,8 @@
 {
   "LABEL":"TEST",
-  "GISAID_WG":"gisaid_hcov-19_2021_05_11_19.fasta",
+  "GISAID_WG":"TEST.fasta",
   "max_ref":"200",
   "max_query":"500",
   "threshold_query":"0.0005",
-  "threshold_ref":"0.0005"
+  "threshold_ref":"0.001"
 }

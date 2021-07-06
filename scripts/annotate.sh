@@ -1,13 +1,11 @@
 #!/bin/bash
 
-
 IN_TREE=$1
 REF=$2
 IN_ALN=$3
 LABEL=$4
 
 # This needs to pull from a config file.
-#BASEDIR="/data/shares/SARS-CoV-2_Clades"
 BASEDIR=$5
 
 DIR=`dirname $IN_TREE`
@@ -25,6 +23,7 @@ echo "# passin: "$PASSIN
 echo ""
 
 #echo "$HYPHYMP LIBPATH=$RES $ANNOTATOR $IN_TREE $REF $IN_ALN $LABEL $PASSIN"
+
 hyphy scripts/annotator.bf $IN_TREE $REF $IN_ALN $LABEL $PASSIN
 
 #$HYPHYMP LIBPATH=$RES $ANNOTATOR $IN_TREE $REF $IN_ALN $LABEL $PASSIN

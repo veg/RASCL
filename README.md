@@ -38,10 +38,10 @@ At the completion of the pipeline, the JSON outputs (Summary.json and Annotation
 #### Exploring results with our interactive notebook
 
 We provide visualizations, an alignment viewer, site-level phylogenetic trees, and summary results and full tables in our interactive notebooks. You can explore all of the results for a particular gene through the dropdown box (see below).
-![](https://i.imgur.com/7UrADgu.gif)
+![](https://i.imgur.com/7UrADgu.gif)   
 
 <br />
 
 Or review full results for a particular site of interest (see below).
-![](https://i.imgur.com/Da3p3x0.gif)
+![](https://i.imgur.com/Da3p3x0.gif)   
 

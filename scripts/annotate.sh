@@ -5,27 +5,23 @@ REF=$2
 IN_ALN=$3
 LABEL=$4
 
-# This needs to pull from a config file.
+# This could be pulled from a config file.
 BASEDIR=$5
 
 DIR=`dirname $IN_TREE`
-echo "# BASE DIR: "$DIR
-
+echo "# Base directory: "$DIR
 NAME=${IN_TREE##*/}
-echo "# NAME: "$NAME
+echo "# Filename: "$NAME
 
 #combined.fas.raxml.bestTree
 PREFIX=${NAME%combined.fas.raxml.bestTree}
-echo "# prefix: "$PREFIX
+echo "# Gene prefix: "$PREFIX
 
-PASSIN="$DIR"/"$PREFIX"
-echo "# passin: "$PASSIN
+PASSING="$DIR"/"$PREFIX"
+echo "# Passing in full path prefix: "$PASSING
 echo ""
 
-#echo "$HYPHYMP LIBPATH=$RES $ANNOTATOR $IN_TREE $REF $IN_ALN $LABEL $PASSIN"
-
-hyphy scripts/annotator.bf $IN_TREE $REF $IN_ALN $LABEL $PASSIN
-
-#$HYPHYMP LIBPATH=$RES $ANNOTATOR $IN_TREE $REF $IN_ALN $LABEL $PASSIN
+echo "hyphy scripts/annotator.bf $IN_TREE $REF $IN_ALN $LABEL $PASSING"
+hyphy scripts/annotator.bf $IN_TREE $REF $IN_ALN $LABEL $PASSING
 
 exit 0

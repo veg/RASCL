@@ -1,43 +1,49 @@
 ## RASCL: RAPID ASSESSMENT OF SARS-COV-2 CLADES THROUGH MOLECULAR SEQUENCE ANALYSIS
 
 ### Overview
-This application is designed to use molecular sequence data from genotypically distinct viral lineages of SARS-CoV-2 to identify distinguishing features and evolution within lineages.
-Using whole genomes, a "query" set of sequences will be compared to against a globally diverse set of "background" sequences. The background data set contains globally circulating SARS-CoV-2 sequences, and the query data set is the set of sequences you want to compare.
-The application uses a number of open-source tools, as well as selection analysis tools from [HyPhy](hyphy.org), and assembles the results from the analysis into JSON files which can then be visualized with our full feature [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades)
+This application is designed to use molecular sequence data from genotypically distinct viral lineages of SARS-CoV-2 to identify distinguishing features and evolution within lineages. Using whole genomes, a "query" set of sequences will be compared to against a globally diverse set of "background" sequences. The background data set contains globally circulating SARS-CoV-2 sequences, and the query data set is the set of sequences you want to compare. The application uses a number of open-source tools, as well as selection analysis tools from [HyPhy](hyphy.org), and assembles the results from the analysis into JSON files which can then be visualized with our full feature [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades)
 
-### Installation
-*There is an assumption that [ANACONDA](https://anaconda.org/) is installed on your machine*
+### Installation and dependencies
 
-1. `git clone` this repo 
-2. in the base directory, run `bash ./setup.sh`. This will create a virtual env (rascl) with the necessary dependencies.
+This application is currently designed to run in an HPC environment.
 
-At this point, run `conda activate rascl` and your env will be ready to go. Next step is putting your data in the correct place.
+There is an assumption that the freely available [Anaconda](https://anaconda.org/) software is installed on your machine.
 
-### Data Input -- Steps necessary to complete before running
-1. in the `snakemake_config.json` change the `LABEL` to the label of your data set (i.e. `"LABEL":"B.1.1.7"`)
-2. (optional) add your own reference file, in the `snakemake_config.json` change the `GISAID_WG` to your file name (i.e. `"GISAID_WG":"your_file.fasta"`) 
-
+#### To install -- Steps necessary to complete before running
+1. `git clone https://github.com/veg/SARS-CoV-2_Clades.git`
+2. `conda env create -f environment.yml`.  This will create a virtual environment called (RASCL) with the necessary dependencies.
+3. At this point, run `conda activate RASCL` and your environment will be ready to go.
 
 ### Directory Structure 
 
+The user input data (which consists of the clade of interest downloaded from GISAID as a whole genome fasta) should be stored in the `./data/{LABEL}` subdirectory, where the LABEL variable is a folder which corresponds to your clade of interest (i.e. B.1.1.7). 
 
-### How to use the pipeline
-1. Clone the repository
-2. Download [GISAID](https://www.gisaid.org/) 
-3. use `mkdir` to put the GISAID data into the `/data/{LABEL}` folder, where `LABEL` is the clade you will analyse: for example, "B-1-617" or "B-1-1-7" (`mkdir data/B-1-617`)
-4. Configure the `env` to set up the environment -- THIS ASSUMES YOU HAVE -- python3 `bash ./setup.sh` then `source ./sc2-clade/bin/activate` 
-5. edit the `LABEL` variable in the `snakemake_config.json`
-6. edit the `GISAID_WG` variable in the `snakemake_config.json`
+#### Configuration -- Steps necessary to complete before running
+1. Use `mkdir data/{LABEL}` to create the directory to house your data, then place your clade of interest fasta file within this directory.
+2. In the `snakemake_config.json` change the `LABEL` variable to point to the label of your data set folder (Important: they need to match). So we will use 'B.1.1.7' in both cases for this example' (i.e. `"LABEL":"B.1.1.7"`)
+3. Additionally, in the `snakemake_config.json` change the `GISAID_WG` variable to your file name (i.e. `"GISAID_WG":"gisaid_hcov-19_2021_05_11_19.fasta"`). This fasta file should already be placed within the `./data/{LABEL}` folder (i.e. `/data/B.1.1.7/gisaid_hcov-19_2021_05_11_19.fasta`)
+4. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue.
 
-`conda env create -f environment.yml`
+The results of running this application will be placed in the `./results/{LABEL}` subdirectory. This will contain a new folder with the name of of your clade i.e. the `"LABEL"` variable from the `snakemake_config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.
 
-[BIOCONDA](https://bioconda.github.io/user/install.html)
+At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, aBSREL, RELAX, and Contrast-FEL) will be aggregated into two JSON files (Summary.json and Annotation.json) for an [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades) to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on SARS-CoV-2 genes within the clade of interest.
 
-5. execute the snakefile (see below if on server) 
+Running the analysis
 
-#### If you are running on the server then run:
-```
-snakemake -s Snakefile --cluster "qsub -V -l nodes=1:ppn=8 -q epyc2 -l walltime=999:00:00" --jobs 50 all --rerun-incomplete --keep-going --use-conda
-```
+### Visualization
 
+#### Generating summary and annotation reports
+
+*Describe this process and the format of the jsons*
+
+At the completion of the pipeline, the json outputs will be sequestered into one large, monolithic json that can be ingested into this [Observable Notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades). 
+
+The monolithic json is comprised of [XX] and looks like [YY]. There is both site-based information, as well as gene-wide information about selection. 
+
+#### Exploring results with our interactive notebook
+
+GIFS..
+
+![](https://i.imgur.com/7UrADgu.gif)
+![](https://i.imgur.com/Da3p3x0.gif)
 

@@ -331,7 +331,7 @@ rule meme_full:
         output = os.path.join(OUTDIR, "{GENE}.MEME-full.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI --alignment {input.in_msa} --tree {input.in_tree_full} --output {output.output} --branches {LABEL}"
+        "mpirun -np {PPN} HYPHYMPI MEME --alignment {input.in_msa} --tree {input.in_tree_full} --output {output.output} --branches {LABEL}"
 #end rule -- meme_full
 
 rule fade:

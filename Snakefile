@@ -29,6 +29,7 @@ print(f"Input whole genome fasta: {INPUT_WG}")
 # End -- User defined settings ----------------------------------------
 
 genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+
 # for debugging or single gene analyses
 #genes = ["S"]
 
@@ -75,7 +76,10 @@ rule all:
         expand(os.path.join(OUTDIR, "{GENE}.ABSREL.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.BUSTEDS.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.RELAX.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes)
+        expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes),
+        os.path.join(OUTDIR, LABEL + "_summary.json"),
+        os.path.join(OUTDIR, LABEL + "_annotation.json")
+
 #end rule -- all
 
 # Rules -- Main analysis ----------------------------------------------
@@ -228,7 +232,7 @@ rule annotate:
     shell:
        "bash scripts/annotate.sh {input.in_tree} 'REFERENCE' {input.in_compressed_fas} {LABEL} {BASEDIR}"
 #end rule annotate
-    
+
 ######################################################################
 #---------------------Selection analyses ----------------------------#
 ######################################################################
@@ -331,7 +335,7 @@ rule meme_full:
         output = os.path.join(OUTDIR, "{GENE}.MEME-full.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI --alignment {input.in_msa} --tree {input.in_tree_full} --output {output.output} --branches {LABEL}"
+        "mpirun -np {PPN} HYPHYMPI MEME --alignment {input.in_msa} --tree {input.in_tree_full} --output {output.output} --branches {LABEL}"
 #end rule -- meme_full
 
 rule fade:
@@ -357,4 +361,17 @@ rule cfel:
         "hyphy contrast-fel --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branch-set {LABEL} --branch-set Reference"
 #end rule -- cfel
 
-# End of file
+rule generate_report:
+    input:
+        expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.FADE.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.MEME-full.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.PRIME.json"), GENE=genes),
+    output:
+        SUMMARY_JSON = os.path.join(OUTDIR, LABEL + "_summary.json"),
+        ANNOTATION_JSON = os.path.join(OUTDIR, LABEL + "_annotation.json")
+    conda: 'environment.yml'
+    shell:
+         "bash scripts/process_json.sh {BASEDIR} {LABEL}"
+#end rule generate_report
+

@@ -1,12 +1,12 @@
 # TN93 Cluster script
 
-
 # Imports -------------------------------------------------------------
 import os
 import sys
 import argparse
 import json
 import shutil
+import random
 
 # Declares
 # Argparse here
@@ -21,6 +21,8 @@ arguments.add_argument('-m', '--max_retain',    help = 'The maximum number of se
 arguments.add_argument('-r', '--reference_seq',    help = 'The maximum number of sequences to retain',               required = False, type = str)
 
 settings = arguments.parse_args()
+
+input_stamp = os.path.getmtime(settings.input)
 
 # Output is actuall the compressed.fas, thats what we want.
 # Input is the MSA.
@@ -39,7 +41,6 @@ if settings.reference_seq:
             
 print ("Reference seq_name %s" % _ref_seq_name)
 
-
 # files
 cluster_json = settings.output_json          #output file # This is actually a json file
 compressed_fasta = settings.output_fasta           # .compressed.fas
@@ -52,16 +53,26 @@ max_toRetain = settings.max_retain
 
 # Need to load this from a config.json file.
 task_runners = {}
-task_runners['tn93-cluster'] = "/usr/local/bin/tn93-cluster"
+#task_runners['tn93-cluster'] = "/usr/local/bin/tn93-cluster"
+task_runners['tn93-cluster'] = "tn93-cluster"
 
 # Helper functions -----------------------------------------------------
 
 def run_command (exec, arguments, filename, tag):
-    result = os.system (" ".join ([exec] + arguments))
+    global input_stamp
+    cmd = " ".join ([exec] + arguments)
+    print(cmd)
+    result = os.system (cmd)
+    if result != 0:
+        print ('Command exection failed code %s' % result)
+        sys.exit(result)
+        return input_stamp
     return os.path.getmtime(filename)
 #end method
 
 def cluster_to_fasta (in_file, out_file, ref_seq = None):
+    # assert that in_file exists, otherwise this will crash if tn93-cluster did not run.
+
     with open (in_file, "r") as fh:
         cluster_json = json.load (fh)
         #print (colored('Running ... converting representative clusters to .FASTA\n', 'cyan'))
@@ -82,7 +93,8 @@ def cluster_to_fasta (in_file, out_file, ref_seq = None):
                         seq_id = cc[0] + '_' + ''.join(random.choices ('0123456789abcdef', k = 10))
                 #end while
                 check_uniq.add (seq_id)
-                print (seq_id,"\n",cc[1], file = fh2)
+                #print (seq_id,"\n",cc[1], file = fh2)
+                print (seq_id + "\n" + cc[1].replace(" ", "") + "\n", file = fh2)
             #end for
          #end with
     #end with
@@ -92,16 +104,14 @@ def cluster_to_fasta (in_file, out_file, ref_seq = None):
 # Main subroutine -----------------------------------------------------
 
 while True:
-    input_stamp = run_command (task_runners['tn93-cluster'], ['-f', '-o', cluster_json, '-t', "%g" % threshold, msa_strike_ambigs], cluster_json, "extract representative clusters at threshold %g" % threshold)
-    
-    
+    input_stamp = run_command (task_runners['tn93-cluster'], ['-f', '-o', cluster_json, '-t', "%g" % threshold, msa_strike_ambigs], cluster_json, "extract representative clusters at threshold %g" % threshold)    
     if _ref_seq_name != "":
         input_stamp, cluster_count = cluster_to_fasta (cluster_json, compressed_fasta, _ref_seq_name)
     else:
         input_stamp, cluster_count = cluster_to_fasta (cluster_json, compressed_fasta) # changes the json to fasta, also returns the count len().
     #end if
     
-    #print("# Current number of sequences", cluster_count)
+    print("# Current number of sequences", cluster_count)
     if cluster_count <= max_toRetain:
         #shutil.copy (msa_SA, msa)
         break
@@ -113,5 +123,3 @@ while True:
 
 sys.exit(0)
 # End of file
-
-# /usr/local/bin/tn93-cluster -f -o /home/aglucaci/SARS-CoV-2/clades/B-1-1-519/3C.query.json -t 0.0001 /home/aglucaci/SARS-CoV-2/clades/B-1-1-519/3C.query.msa.bk

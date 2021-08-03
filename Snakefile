@@ -79,7 +79,6 @@ rule all:
         expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes),
         os.path.join(OUTDIR, LABEL + "_summary.json"),
         os.path.join(OUTDIR, LABEL + "_annotation.json")
-
 #end rule -- all
 
 # Rules -- Main analysis ----------------------------------------------
@@ -180,7 +179,6 @@ rule tn93_cluster_ref:
 #end rule tn93_cluster_ref
 
 # Combine them, the alignment ----------------------------------------------------
-## works 
 rule combine:
     params:
         THRESHOLD_QUERY = config["threshold_query"]
@@ -208,7 +206,6 @@ rule convert_to_protein:
 #end rule -- convert_to_protein
 
 # Combined ML Tree
-## works
 rule raxml:
     params:
         THREADS = PPN
@@ -367,6 +364,9 @@ rule generate_report:
         expand(os.path.join(OUTDIR, "{GENE}.FADE.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.MEME-full.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.PRIME.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.ABSREL.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.BUSTEDS.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.RELAX.json"), GENE=genes)
     output:
         SUMMARY_JSON = os.path.join(OUTDIR, LABEL + "_summary.json"),
         ANNOTATION_JSON = os.path.join(OUTDIR, LABEL + "_annotation.json")

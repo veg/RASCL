@@ -1,6 +1,6 @@
 {
-  "LABEL":"TEST",
-  "GISAID_WG":"TEST.fasta",
+  "LABEL":"B.1.617.1",
+  "GISAID_WG":"B.1.617.1.fasta",
   "max_ref":"200",
   "max_query":"500",
   "threshold_query":"0.0005",

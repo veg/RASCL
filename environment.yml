@@ -11,3 +11,4 @@ dependencies:
   - snakemake=5.3
   - stephenshank::tn93=1.0.7
   - python-bioext=0.19.7
+  - python=3.6

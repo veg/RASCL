@@ -12,6 +12,7 @@ ANNOTATION_JSON="$TAG"_annotation.json
 SUMMARY_JSON="$TAG"_summary.json
 
 for file in "$DATA_DIR"/*.combined.fas; do
+   echo ""
    echo python3 scripts/generate-report.py -f $file -A $ANNOTATION_JSON -S $SUMMARY_JSON -r "$REF_TAG"
    python3 scripts/generate-report.py -f $file -A $ANNOTATION_JSON -S $SUMMARY_JSON -r "$REF_TAG"
 done

@@ -3,5 +3,5 @@
   "cluster" : "qsub",
   "nodes": 1,
   "ppn": 8,
-  "name":"epyc2"
+  "name":"epyc"
 }}

@@ -5,7 +5,7 @@ channels:
   - defaults
 
 dependencies:
-  - biopython=1.78
+  - biopython=1.77
   - hyphy=2.5.31 
   - raxml-ng=1.0.2 
   - snakemake=5.3

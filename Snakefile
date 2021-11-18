@@ -1,7 +1,7 @@
 # Snakefile for SARS-CoV-2 Clades analysis (RASCL).
 # @Author: Alexander Lucaci, Jordan Zehr, Stephen Shank
 
-# Imports
+# Imports -------------------------------------------------------------
 import os
 import sys
 import json
@@ -11,9 +11,11 @@ from pathlib import Path
 # Declares ------------------------------------------------------------
 with open("snakemake_config.json", "r") as in_sc:
   config = json.load(in_sc)
+#end with
 
 with open("cluster.json", "r") as in_c:
   cluster = json.load(in_c)
+#end with
 
 # User settings -------------------------------------------------------
 BASEDIR = os.getcwd()
@@ -24,23 +26,26 @@ LABEL = config["LABEL"]
 GISAID_WG = config["GISAID_WG"] 
 
 # The script will also look for this specific whole genome fasta within data/{LABEL}/
-INPUT_WG = os.path.join(BASEDIR, "data" + "/" + LABEL + "/" + GISAID_WG)
+INPUT_WG = os.path.join(BASEDIR, "data", LABEL, GISAID_WG)
+
+#INPUT_WG = os.path.join(BASEDIR, "data" + "/" + LABEL + "/" + GISAID_WG)
 print(f"Input whole genome fasta: {INPUT_WG}")
 # End -- User defined settings ----------------------------------------
 
-genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+#genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
 
 # for debugging or single gene analyses
-#genes = ["S"]
+genes = ["S"]
 
 # Reference sequence dirs
-REF_SEQ_DIR = os.path.join(BASEDIR, "data/ReferenceSeq")
-REF_ALN_DIR = os.path.join(BASEDIR, "data/ReferenceSetViPR")
+REF_SEQ_DIR = os.path.join(BASEDIR, "data", "ReferenceSeq")
+REF_ALN_DIR = os.path.join(BASEDIR, "data", "ReferenceSetViPR")
 
 # Set output directory
-OUTDIR = os.path.join(BASEDIR, "results/" + LABEL)
+OUTDIR = os.path.join(BASEDIR, "results", LABEL)
 
 # Create output dir.
+Path(os.path.join(BASEDIR,"results")).mkdir(parents=True, exist_ok=True)
 Path(OUTDIR).mkdir(parents=True, exist_ok=True)
 
 # Settings, these can be passed in or set in a config.json type file

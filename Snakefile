@@ -1,4 +1,5 @@
 # Snakefile for SARS-CoV-2 Clades analysis (RASCL).
+# 2021
 # @Author: Alexander Lucaci, Jordan Zehr, Stephen Shank
 
 # Imports -------------------------------------------------------------
@@ -22,20 +23,18 @@ BASEDIR = os.getcwd()
 print(f'Base directory: {BASEDIR}')
 
 # Which clades are you analyzing?
-LABEL = config["LABEL"]
-GISAID_WG = config["GISAID_WG"] 
+LABEL = config["LABEL"] # add assert
+WholeGenomeSeqs = config["WholeGenomeSeqs"] # add assert
 
 # The script will also look for this specific whole genome fasta within data/{LABEL}/
-INPUT_WG = os.path.join(BASEDIR, "data", LABEL, GISAID_WG)
-
-#INPUT_WG = os.path.join(BASEDIR, "data" + "/" + LABEL + "/" + GISAID_WG)
+INPUT_WG = os.path.join(BASEDIR, "data", LABEL, WholeGenomeSeqs)
 print(f"Input whole genome fasta: {INPUT_WG}")
 # End -- User defined settings ----------------------------------------
 
-#genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
 
 # for debugging or single gene analyses
-genes = ["S"]
+#genes = ["S"]
 
 # Reference sequence dirs
 REF_SEQ_DIR = os.path.join(BASEDIR, "data", "ReferenceSeq")
@@ -54,7 +53,7 @@ PPN = cluster["__default__"]["ppn"]
 # Rule All ------------------------------------------------------------
 rule all:
     input:
-        os.path.join(OUTDIR, GISAID_WG+".fa"),
+        os.path.join(OUTDIR, WholeGenomeSeqs + ".fa"),
         expand(os.path.join(OUTDIR, "{GENE}.query.bam"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.OG"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.SA"), GENE=genes),
@@ -91,7 +90,7 @@ rule clean:
     input:
         in_wg = INPUT_WG
     output:
-        out_wg = os.path.join(OUTDIR, GISAID_WG+".fa")
+        out_wg = os.path.join(OUTDIR, WholeGenomeSeqs + ".fa")
     shell:
        "bash scripts/cleaner.sh {input.in_wg} {output.out_wg}"
 #end rule -- clean

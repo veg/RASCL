@@ -8,8 +8,8 @@ DATA_DIR="$BASEDIR"/results/"$TAG"
 
 # Static settings
 REF_TAG="REFERENCE"
-ANNOTATION_JSON="$BASEDIR"/"$TAG"_annotation.json
-SUMMARY_JSON="$BASEDIR"/"$TAG"_summary.json
+ANNOTATION_JSON="$DATA_DIR"/"$TAG"_annotation.json
+SUMMARY_JSON="$DATA_DIR"/"$TAG"_summary.json
 
 for file in "$DATA_DIR"/*.combined.fas; do
    echo ""

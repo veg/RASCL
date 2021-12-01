@@ -1,8 +1,8 @@
 {
-  "LABEL":"B.1.617.1",
-  "GISAID_WG":"B.1.617.1.fasta",
+  "LABEL":"B.1.1.529-11292021",
+  "WholeGenomeSeqs":"gisaid_hcov-19_2021_11_29_13.fasta",
   "max_ref":"200",
-  "max_query":"500",
+  "max_query":"200",
   "threshold_query":"0.0005",
   "threshold_ref":"0.001"
 }

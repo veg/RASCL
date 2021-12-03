@@ -1,5 +1,5 @@
 {
-  "LABEL":"B.1.1.529-11292021",
+  "LABEL":"B.1.1.529",
   "WholeGenomeSeqs":"gisaid_hcov-19_2021_11_29_13.fasta",
   "max_ref":"200",
   "max_query":"200",

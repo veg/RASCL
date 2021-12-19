@@ -10,7 +10,7 @@ This application is currently designed to run in an HPC environment.
 There is an assumption that the freely available [Anaconda](https://anaconda.org/) software is installed on your machine.
 
 #### To install -- Steps necessary to complete before running
-1. `git clone https://github.com/veg/SARS-CoV-2_Clades.git RASCL`
+1. `git clone https://github.com/veg/RASCL.git RASCL`
 2. `conda env create -f environment.yml`.  This will create a virtual environment called (RASCL) with the necessary dependencies.
 3. At this point, run `conda activate RASCL` and your environment will be ready to go.
 

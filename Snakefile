@@ -20,21 +20,27 @@ with open("cluster.json", "r") as in_c:
 
 # User settings -------------------------------------------------------
 BASEDIR = os.getcwd()
-print(f'Base directory: {BASEDIR}')
+
+print(f'We are operating out of base directory: {BASEDIR}')
 
 # Which clades are you analyzing?
 LABEL = config["LABEL"] # add assert
 WholeGenomeSeqs = config["WholeGenomeSeqs"] # add assert
 
 # The script will also look for this specific whole genome fasta within data/{LABEL}/
-INPUT_WG = os.path.join(BASEDIR, "data", LABEL, WholeGenomeSeqs)
+#INPUT_WG = os.path.join(BASEDIR, "data", LABEL, WholeGenomeSeqs)
+INPUT_WG = os.path.join(BASEDIR, "data", WholeGenomeSeqs)
 print(f"Input whole genome fasta: {INPUT_WG}")
+
 # End -- User defined settings ----------------------------------------
 
 genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
 
-# for debugging or single gene analyses
+# For debugging or single gene analyses
 #genes = ["S"]
+
+# Basename of INPUT_WG (used in rule clean)
+INPUT_WG_basename = os.path.basename(INPUT_WG)
 
 # Reference sequence dirs
 REF_SEQ_DIR = os.path.join(BASEDIR, "data", "ReferenceSeq")
@@ -53,7 +59,7 @@ PPN = cluster["__default__"]["ppn"]
 # Rule All ------------------------------------------------------------
 rule all:
     input:
-        os.path.join(OUTDIR, WholeGenomeSeqs + ".fa"),
+        os.path.join(OUTDIR, INPUT_WG_basename + ".fa"),
         expand(os.path.join(OUTDIR, "{GENE}.query.bam"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.OG"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.SA"), GENE=genes),
@@ -89,7 +95,7 @@ rule clean:
     input:
         in_wg = INPUT_WG
     output:
-        out_wg = os.path.join(OUTDIR, WholeGenomeSeqs + ".fa")
+        out_wg = os.path.join(OUTDIR, INPUT_WG_basename + ".fa")
     shell:
        "bash scripts/cleaner.sh {input.in_wg} {output.out_wg}"
 #end rule -- clean

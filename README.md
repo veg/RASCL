@@ -16,16 +16,17 @@ There is an assumption that the freely available [Anaconda](https://anaconda.org
 
 #### Configuration -- Steps necessary to complete before running
 
-The user input data (which consists of the clade of interest downloaded from GISAID as a whole genome fasta) should be stored in the `./data/{LABEL}` subdirectory, where the LABEL variable is a folder which corresponds to your clade of interest (i.e. B.1.1.7). 
+The user input data (which consists of the clade of interest downloaded as a FASTA file of SARS-CoV-2 whole genome's) should be stored in the `./data}` subdirectory. The LABEL variable corresponds to your clade of interest (e.g. B.1.1.7) and will be used for annotation. 
 
-1. Use `mkdir data/{LABEL}` to create the directory to house your data, then place your clade of interest fasta file within this directory.
-2. In the `snakemake_config.json` change the `LABEL` variable to point to the label of your data set folder (Important: they need to match). So we will use 'B.1.1.7' in both cases for this example' (i.e. `"LABEL":"B.1.1.7"`)
-3. Additionally, in the `snakemake_config.json` change the `GISAID_WG` variable to your file name (i.e. `"GISAID_WG":"gisaid_hcov-19_2021_05_11_19.fasta"`). This fasta file should already be placed within the `./data/{LABEL}` folder (i.e. `/data/B.1.1.7/gisaid_hcov-19_2021_05_11_19.fasta`)
-4. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue.
+1. Place your clade of interest fasta file within the "data" directory.
+2. In the `snakemake_config.json` change the following:
+       A. The `LABEL` variable corresponds to your clade of interest (e.g. B.1.1.7)
+       B. Change the `WholeGenomeSeqs` variable to your input data filename (This fasta file should already be placed within the `./data` folder.) within the "data" directory.
+5. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue.
 
 The results of running this application will be placed in the `./results/{LABEL}` subdirectory. This will contain a new folder with the name of of your clade i.e. the `"LABEL"` variable from the `snakemake_config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.
 
-At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, aBSREL, RELAX, and Contrast-FEL) will be aggregated into two JSON files (Summary.json and Annotation.json) for an [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades) to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on SARS-CoV-2 genes within the clade of interest.
+At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, RELAX, and Contrast-FEL) will be aggregated into two JSON files (Summary.json and Annotation.json) for an [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades) to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on SARS-CoV-2 genes within the clade of interest.
 
 ### Running the analysis
 

@@ -20,8 +20,8 @@ The user input data (which consists of the clade of interest downloaded as a FAS
 
 1. Place your clade of interest fasta file within the "data" directory.
 2. In the `snakemake_config.json` change the following:
-       A. The `LABEL` variable corresponds to your clade of interest (e.g. B.1.1.7)
-       B. Change the `WholeGenomeSeqs` variable to your input data filename (This fasta file should already be placed within the `./data` folder.) within the "data" directory.
+       (A). The `LABEL` variable corresponds to your clade of interest (e.g. B.1.1.7)
+       (B). Change the `WholeGenomeSeqs` variable to your input data filename (This fasta file should already be placed within the `./data` folder.) within the "data" directory.
 5. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue.
 
 The results of running this application will be placed in the `./results/{LABEL}` subdirectory. This will contain a new folder with the name of of your clade i.e. the `"LABEL"` variable from the `snakemake_config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.

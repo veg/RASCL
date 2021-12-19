@@ -77,7 +77,6 @@ rule all:
         expand(os.path.join(OUTDIR, "{GENE}.MEME-full.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.PRIME.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.FADE.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, "{GENE}.ABSREL.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.BUSTEDS.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.RELAX.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes),

@@ -103,8 +103,10 @@ def cluster_to_fasta (in_file, out_file, ref_seq = None):
 
 # Main subroutine -----------------------------------------------------
 
+input_file = msa_strike_ambigs
+
 while True:
-    input_stamp = run_command (task_runners['tn93-cluster'], ['-f', '-o', cluster_json, '-t', "%g" % threshold, msa_strike_ambigs], cluster_json, "extract representative clusters at threshold %g" % threshold)    
+    input_stamp = run_command (task_runners['tn93-cluster'], ['-f', '-o', cluster_json, '-t', "%g" % threshold, input_file], cluster_json, "extract representative clusters at threshold %g" % threshold)    
     if _ref_seq_name != "":
         input_stamp, cluster_count = cluster_to_fasta (cluster_json, compressed_fasta, _ref_seq_name)
     else:
@@ -118,6 +120,7 @@ while True:
     else:
        step = threshold * 0.25 
        threshold += step
+       input_file = compressed_fasta
     #end if
 #end while
 

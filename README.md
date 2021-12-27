@@ -32,6 +32,10 @@ At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, 
 
 We provide an example HPC bash script to run the analysis in `run_Silverback.sh` which is designed to run on the Temple University computing cluster. This file can be modified to run in your own computing environment. In the `cluster.json` specify the name of the queue on your system, along with the computing resources to be used.
 
+There is also a "serial" runner in `run_serial.sh` which takes one optional argument (number of cores to use, default 1).
+
+The `TEST.fasta` included in the `data` directory comprises some GenBank Omicron (BA.1) sequences.
+
 ### Visualization
 
 At the completion of the pipeline, the JSON outputs (Summary.json and Annotation.json) will be generated. These can be ingested into our full feature [Observable Notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades). 

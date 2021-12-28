@@ -32,9 +32,25 @@ At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, 
 
 We provide an example HPC bash script to run the analysis in `run_Silverback.sh` which is designed to run on the Temple University computing cluster. This file can be modified to run in your own computing environment. In the `cluster.json` specify the name of the queue on your system, along with the computing resources to be used.
 
+There is also a "serial" runner in `run_serial.sh` which takes one optional argument (number of cores to use, default 1).
+
+The `TEST.fasta` included in the `data` directory comprises some GenBank Omicron (BA.1) sequences.
+
+Note, that in some cases not all of the pipeline steps will complete (e.g. insufficient sequences to run analyses on all gene segments). In this case please run (replacing TAG with the value of `LABEL` from `snakemake_config.json` 
+
+```
+sh scripts/generate-report.py `pwd` TAG
+```
+
+from the top RASCL directory.
+
+The results of the analysis will be placed into the `results/LABEL` directory as `LABEL_summary.json` and `LABEL_annotation.json`.
+
 ### Visualization
 
 At the completion of the pipeline, the JSON outputs (Summary.json and Annotation.json) will be generated. These can be ingested into our full feature [Observable Notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades). 
+
+The version of the notebook at [https://observablehq.com/@spond/sars-cov-2-clades](https://observablehq.com/@spond/sars-cov-2-clades) allows one to upload `summary` and `annotation` JSON files.
 
 #### Exploring results with our interactive notebook
 

@@ -1,8 +1,8 @@
 {
-  "LABEL":"B.1.1.529",
-  "WholeGenomeSeqs":"gisaid_hcov-19_2021_11_29_13.fasta",
+  "LABEL":"TEST",
+  "WholeGenomeSeqs":"TEST.fasta",
   "max_ref":"200",
-  "max_query":"200",
+  "max_query":"500",
   "threshold_query":"0.0005",
   "threshold_ref":"0.001"
 }

@@ -10,33 +10,52 @@ This application is currently designed to run in an HPC environment.
 There is an assumption that the freely available [Anaconda](https://anaconda.org/) software is installed on your machine.
 
 #### To install -- Steps necessary to complete before running
-1. `git clone https://github.com/veg/SARS-CoV-2_Clades.git RASCL`
+1. `git clone https://github.com/veg/RASCL.git RASCL`
 2. `conda env create -f environment.yml`.  This will create a virtual environment called (RASCL) with the necessary dependencies.
 3. At this point, run `conda activate RASCL` and your environment will be ready to go.
 
 #### Configuration -- Steps necessary to complete before running
 
-The user input data (which consists of the clade of interest downloaded from GISAID as a whole genome fasta) should be stored in the `./data/{LABEL}` subdirectory, where the LABEL variable is a folder which corresponds to your clade of interest (i.e. B.1.1.7). 
+The user input data (which consists of the clade of interest downloaded as a FASTA file of SARS-CoV-2 whole genome's) should be stored in the `./data}` subdirectory. The LABEL variable corresponds to your clade of interest (e.g. B.1.1.7) and will be used for annotation. 
 
-1. Use `mkdir data/{LABEL}` to create the directory to house your data, then place your clade of interest fasta file within this directory.
-2. In the `snakemake_config.json` change the `LABEL` variable to point to the label of your data set folder (Important: they need to match). So we will use 'B.1.1.7' in both cases for this example' (i.e. `"LABEL":"B.1.1.7"`)
-3. Additionally, in the `snakemake_config.json` change the `GISAID_WG` variable to your file name (i.e. `"GISAID_WG":"gisaid_hcov-19_2021_05_11_19.fasta"`). This fasta file should already be placed within the `./data/{LABEL}` folder (i.e. `/data/B.1.1.7/gisaid_hcov-19_2021_05_11_19.fasta`)
-4. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue.
+1. Place your clade of interest fasta file within the "data" directory.
+2. In the `snakemake_config.json` change the following:
+       The `LABEL` variable corresponds to your clade of interest (e.g. B.1.1.7).
+       Change the `WholeGenomeSeqs` variable to your input data filename (This fasta file should already be placed within the `./data` folder.) within the "data" directory.
+3. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue.
 
 The results of running this application will be placed in the `./results/{LABEL}` subdirectory. This will contain a new folder with the name of of your clade i.e. the `"LABEL"` variable from the `snakemake_config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.
 
-At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, aBSREL, RELAX, and Contrast-FEL) will be aggregated into two JSON files (Summary.json and Annotation.json) for an [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades) to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on SARS-CoV-2 genes within the clade of interest.
+At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, RELAX, and Contrast-FEL) will be aggregated into two JSON files (Summary.json and Annotation.json) for an [Observable notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades) to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on SARS-CoV-2 genes within the clade of interest.
 
 ### Running the analysis
 
 We provide an example HPC bash script to run the analysis in `run_Silverback.sh` which is designed to run on the Temple University computing cluster. This file can be modified to run in your own computing environment. In the `cluster.json` specify the name of the queue on your system, along with the computing resources to be used.
 
+There is also a "serial" runner in `run_serial.sh` which takes one optional argument (number of cores to use, default 1).
+
+The `TEST.fasta` included in the `data` directory comprises some GenBank Omicron (BA.1) sequences.
+
+Note, that in some cases not all of the pipeline steps will complete (e.g. insufficient sequences to run analyses on all gene segments). In this case please run (replacing TAG with the value of `LABEL` from `snakemake_config.json` 
+
+```
+sh scripts/generate-report.py `pwd` TAG
+```
+
+from the top RASCL directory.
+
+The results of the analysis will be placed into the `results/LABEL` directory as `LABEL_summary.json` and `LABEL_annotation.json`.
+
 ### Visualization
 
 At the completion of the pipeline, the JSON outputs (Summary.json and Annotation.json) will be generated. These can be ingested into our full feature [Observable Notebook](https://observablehq.com/@aglucaci/sars-cov-2-clades). 
 
+The version of the notebook at [https://observablehq.com/@spond/sars-cov-2-clades](https://observablehq.com/@spond/sars-cov-2-clades) allows one to upload `summary` and `annotation` JSON files.
+
 #### Exploring results with our interactive notebook
 
 We provide visualizations, an alignment viewer, site-level phylogenetic trees, and summary results and full tables in our interactive notebooks. You can explore all of the results for a particular gene through the dropdown box. Or review full results for a particular site of interest (see below).
+
+
 ![](https://i.imgur.com/Da3p3x0.gif)
 

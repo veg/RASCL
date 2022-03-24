@@ -1,0 +1,587 @@
+#
+#Snakefile for SARS-CoV-2 Clades analysis with prefiltering (RASCL_HEAVY).
+# 2022
+# @Author: Alexander G Lucaci
+
+# Imports -------------------------------------------------------------
+import os
+import sys
+import json
+import csv
+from pathlib import Path
+
+# Declares ------------------------------------------------------------
+with open("config.json", "r") as in_sc:
+  config = json.load(in_sc)
+#end with
+
+with open("cluster.json", "r") as in_c:
+  cluster = json.load(in_c)
+#end with
+
+# User settings -------------------------------------------------------
+BASEDIR = os.getcwd()
+
+print(f'We are operating out of base directory: {BASEDIR}')
+
+# Which clades are you analyzing?
+LABEL = config["LABEL"] # add assert
+WholeGenomeSeqs = config["WholeGenomeSeqs"] # add assert
+
+# The script will also look for this specific whole genome fasta within data/{LABEL}/
+INPUT_WG = os.path.join(BASEDIR, "data", LABEL, WholeGenomeSeqs)
+#INPUT_WG = os.path.join(BASEDIR, "data", WholeGenomeSeqs)
+print(f"Input whole genome fasta: {INPUT_WG}")
+
+# End -- User defined settings ----------------------------------------
+
+#genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+
+# For debugging or single gene analyses
+genes = ["S"]
+
+# Basename of INPUT_WG (used in rule clean)
+INPUT_WG_basename = os.path.basename(INPUT_WG)
+
+# Reference sequence dirs
+REF_SEQ_DIR = os.path.join(BASEDIR, "data", "ReferenceSeq")
+REF_ALN_DIR = os.path.join(BASEDIR, "data", "ReferenceSetViPR")
+
+# Set output directory
+OUTDIR = os.path.join(BASEDIR, "results", LABEL)
+
+# Create output dir.
+Path(os.path.join(BASEDIR,"results")).mkdir(parents=True, exist_ok=True)
+Path(OUTDIR).mkdir(parents=True, exist_ok=True)
+
+# Settings, these can be passed in or set in a config.json type file
+PPN = cluster["__default__"]["ppn"] 
+
+# Manual hyphy settings, fix conda variables.
+HYPHY_BIN = "/home/aglucaci/hyphy/HYPHYMPI"
+RES="/home/aglucaci/hyphy/res"
+
+hyphy = " ".join([HYPHY_BIN, "LIBPATH=" + RES])
+
+print("# Configuring rule all")
+# Rule All ------------------------------------------------------------
+rule all:
+    input:
+        os.path.join(OUTDIR, INPUT_WG_basename + ".fa"),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".fa.{GENE}.raw"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.query.bam"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.query.msa.OG"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.query.msa.SA"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t0.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.all.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t1.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t2.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq-all.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled.nwk"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled-internal.nwk"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.SLAC.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BGM.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BUSTEDS.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.FEL.json"), GENE=genes), 
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.MEME.json"), GENE=genes)
+#end rule -- all
+
+print("# Starting main analysis")
+# Rules -- Main analysis ----------------------------------------------
+rule clean:
+    input:
+        in_wg = INPUT_WG
+    output:
+        out_wg = os.path.join(OUTDIR, INPUT_WG_basename + ".fa")
+    shell:
+       "bash scripts/cleaner.sh {input.in_wg} {output.out_wg}"
+#end rule -- clean
+
+
+# PREFILTERING ----------
+SC2_GENE_MAP = {"S": {"start":20000, "end": 26000}}
+rule trim:
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".fa.{GENE}.raw")
+    params:
+        in_wg = rules.clean.output.out_wg,
+        #start_site = SC2_GENE_MAP["{GENE}"]["start"],
+        #end_site = SC2_GENE_MAP["{GENE}"]["end"],
+        start_site = 20000,
+        end_site = 26000,
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".fa.{GENE}.raw")
+    script:
+       "scripts/filter-sites.py"
+#end rule
+# End PREFILTERING -------
+
+# PROCESS QUERY SEQUENCES
+rule bealign_query:
+    input:
+        #in_genome = rules.clean.output.out_wg,
+        in_genome = rules.trim.output.output,
+        in_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.query.bam")
+    shell:
+        "bealign -r {input.in_gene_ref_seq} -m HIV_BETWEEN_F {input.in_genome} {output.output}"
+#end rule -- bealign
+
+rule bam2msa_query:
+    input:
+        in_bam = rules.bealign_query.output.output
+    output:
+        out_msa = os.path.join(OUTDIR, "{GENE}.query.msa.OG")
+    shell:
+        "bam2msa {input.in_bam} {output.out_msa}"        
+#end rule -- bam2msa_query
+
+rule strike_ambigs_query:
+   input:
+       in_msa = rules.bam2msa_query.output.out_msa
+   output:
+       out_strike_ambigs = os.path.join(OUTDIR, "{GENE}.query.msa.SA")
+   shell:
+      "{hyphy} scripts/strike-ambigs.bf --alignment {input.in_msa} --output {output.out_strike_ambigs}"
+#end rule -- strike_ambigs_query
+
+# --- Additional modifications ---
+
+rule exact_copies:
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.clusters.json")
+    params:
+        input = rules.strike_ambigs_query.output.out_strike_ambigs,
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.clusters.json")
+    script:
+        "scripts/exact-copies.py"
+# end rule
+
+
+rule cluster_processor:
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.fas")
+    params:
+        input = rules.exact_copies.output.output,
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.fas")
+    script:
+        "scripts/cluster-processor.py"
+# end rule
+
+#$TN93 -f -t 0.0 ${FILE}.S.u.fas > ${FILE}.t0.clusters.json
+#$P3 python/cluster-processor.py ${FILE}.t0.clusters.json > ${FILE}.S.all.fas
+#
+
+rule tn93_t0:
+   input:
+       input = rules.cluster_processor.output.output
+   output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t0.clusters.json")
+   shell:
+        "tn93-cluster -f -t 0.0 {input.input} > {output.output}"
+#end rule
+
+rule cluster_processor_t0:
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.all.fas")
+    params:
+        input = rules.tn93_t0.output.output,
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.all.fas")
+    script:
+        "scripts/cluster-processor.py"
+# end rule
+
+
+rule tn93_t1:
+   input:
+       input = rules.cluster_processor_t0.output.output
+   output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t1.clusters.json")
+   shell:
+        "tn93-cluster -f -t 0.00075 {input.input} > {output.output}"
+#end rule
+
+rule cluster_processor_t1:
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq.fas")
+    params:
+        input = rules.tn93_t1.output.output,
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq.fas")
+    script:
+        "scripts/cluster-processor.py"
+# end rule
+
+rule tn93_t2:
+   input:
+       input = rules.cluster_processor_t1.output.output
+   output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t2.clusters.json")
+   shell:
+        "tn93-cluster -f -t 0.002 {input.input} > {output.output}"
+#end rule
+
+
+rule cluster_processor_t2:
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq-all.fas")
+    params:
+        input = rules.tn93_t1.output.output,
+        input2 = rules.tn93_t2.output.output,
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq-all.fas"),
+        output2 = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.blacklist.txt")
+    script:
+        "scripts/cluster-processor.py"
+# end rule
+
+rule cluster_processor_consensus:
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas")
+    params:
+        cluster_min = 3,
+        input_msa = rules.strike_ambigs_query.output.out_strike_ambigs,
+        input_uniq_all = rules.cluster_processor_t2.output.output,
+        input_t1_clusters = rules.tn93_t1.output.output,
+        input_t0_clusters = rules.tn93_t0.output.output,
+        input_u_clusters = rules.exact_copies.output.output,
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas")
+    script:
+        "scripts/cluster-processor-consensus.py"
+# end rule
+
+rule raxml_uniq2:
+    params:
+        THREADS = PPN
+    input:
+        input = rules.cluster_processor_consensus.output.output
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree")
+    shell:
+        "raxml-ng --msa {input.input} --threads {params.THREADS} --tree pars{{5}} --model GTR+G+I"
+#end rule -- raxml
+
+rule annotate_fake:
+    input:
+       input = rules.raxml_uniq2.output.output
+    output:
+       out_clade_tree = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled.nwk"),
+       out_int_tree = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled-internal.nwk")
+    shell:
+        "cp {input.input} {output.out_clade_tree} && cp {input.input} {output.out_int_tree}"
+#end rule
+
+rule slac_uniq2:
+    input:
+        in_msa =  rules.cluster_processor_consensus.output.output,
+        in_tree = rules.annotate_fake.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.SLAC.json")
+    shell:
+        "mpirun -np {PPN} {hyphy} SLAC --alignment {input.in_msa} --samples 0 --tree {input.in_tree} --output {output.output} --branches All --kill-zero-lengths Constrain"
+#end rule 
+
+rule bgm_uniq2:
+    input:
+        in_msa =  rules.cluster_processor_consensus.output.output,
+        in_tree = rules.annotate_fake.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BGM.json")
+    shell:
+        "{hyphy} BGM --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal --min-subs 2 --steps 1000000 --samples 1000 --burn-in 100000"
+#end rule 
+
+rule busteds_uniq2:
+    input:
+        in_msa =  rules.cluster_processor_consensus.output.output,
+        in_tree = rules.annotate_fake.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BUSTEDS.json")
+    shell:
+        "mpirun -np {PPN} {hyphy} BUSTED --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal --rates 3 --starting-points 5"
+#end rule
+
+rule fel_uniq2:
+    input:
+        in_msa =  rules.cluster_processor_consensus.output.output,
+        in_tree = rules.annotate_fake.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.FEL.json") 
+    shell:
+        "mpirun -np {PPN} {hyphy} FEL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal --ci Yes"
+#end rule -- fel
+
+rule meme_uniq2:
+    input:
+        in_msa =  rules.cluster_processor_consensus.output.output,
+        in_tree = rules.annotate_fake.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.MEME.json")
+    shell:
+        "mpirun -np {PPN} {hyphy} MEME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal"
+#end rule -- MEME
+
+
+
+# --------------------------------
+
+
+
+
+rule tn93_cluster_query:
+    params:
+        THRESHOLD_QUERY = config["threshold_query"],
+        MAX_QUERY = config["max_query"] 
+    input:
+        in_msa = rules.strike_ambigs_query.output.out_strike_ambigs
+    output:
+        out_fasta = os.path.join(OUTDIR, "{GENE}.query.compressed.fas"),
+        out_json = os.path.join(OUTDIR, "{GENE}.query.json")
+    shell:
+        "python3 scripts/tn93_cluster.py --input {input.in_msa} --output_fasta {output.out_fasta} --output_json {output.out_json} --threshold {params.THRESHOLD_QUERY} --max_retain {params.MAX_QUERY}"
+#end rule tn93_cluster_query`
+
+# Do the above for background sequences. --------------------------------------------
+rule bealign_ref:
+    input:
+        in_genome_ref = os.path.join(REF_ALN_DIR, "sequences.{GENE}_nuc.compressed.fas"),
+        in_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.reference.bam")
+    shell:
+        "bealign -r {input.in_gene_ref_seq} -m HIV_BETWEEN_F -K {input.in_genome_ref} {output.output}"
+#end rule -- bealign_ref
+
+rule bam2msa_ref:
+    input:
+        in_bam = rules.bealign_ref.output.output
+    output:
+        out_msa = os.path.join(OUTDIR, "{GENE}.reference.msa.OG")
+    shell:
+        "bam2msa {input.in_bam} {output.out_msa}"
+#end rule -- bam2msa_ref
+
+rule strike_ambigs_ref:
+   input:
+       in_msa = rules.bam2msa_ref.output.out_msa
+   output:
+       out_strike_ambigs = os.path.join(OUTDIR, "{GENE}.reference.msa.SA")
+   conda: 'environment.yml'
+   shell:
+      "hyphy scripts/strike-ambigs.bf --alignment {input.in_msa} --output {output.out_strike_ambigs}"
+#end rule -- strike_ambigs_ref
+
+rule tn93_cluster_ref:
+    params:
+        THRESHOLD_REF = config["threshold_ref"],
+        MAX_REF = config["max_ref"],
+    input:
+        in_msa = rules.strike_ambigs_ref.output.out_strike_ambigs,
+        in_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
+    output:
+        out_fasta = os.path.join(OUTDIR, "{GENE}.reference.compressed.fas"),
+        out_json = os.path.join(OUTDIR, "{GENE}.reference.json")
+    shell:
+        "python3 scripts/tn93_cluster.py --input {input.in_msa} --output_fasta {output.out_fasta} --output_json {output.out_json} --threshold {params.THRESHOLD_REF} --max_retain {params.MAX_REF} --reference_seq {input.in_gene_ref_seq}"
+#end rule tn93_cluster_ref
+
+# Combine them, the alignment ----------------------------------------------------
+rule combine:
+    params:
+        THRESHOLD_QUERY = config["threshold_query"]
+    input:
+        in_compressed_fas = rules.tn93_cluster_query.output.out_fasta,
+        in_msa = rules.tn93_cluster_ref.output.out_fasta,
+	in_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.combined.fas")
+        #output_csv = os.path.join(OUTDIR, "{GENE}.combined.fas.csv")
+    conda: 'environment.yml'
+    shell:
+        "python3 scripts/combine.py --input {input.in_compressed_fas} -o {output.output} --threshold {params.THRESHOLD_QUERY} --msa {input.in_msa} --reference_seq {input.in_gene_ref_seq}"
+#end rule -- combine
+
+# Convert to protein
+rule convert_to_protein:
+    input:
+        combined_fas = rules.combine.output.output
+    output:
+        protein_fas = os.path.join(OUTDIR, "{GENE}.AA.fas")
+    conda: 'environment.yml'
+    shell:
+        "hyphy conv Universal 'Keep Deletions' {input.combined_fas} {output.protein_fas}"
+#end rule -- convert_to_protein
+
+# Combined ML Tree
+rule raxml:
+    params:
+        THREADS = PPN
+    input:
+        combined_fas = rules.combine.output.output
+    output:
+        combined_tree = os.path.join(OUTDIR, "{GENE}.combined.fas.raxml.bestTree")
+    shell:
+        "raxml-ng --model GTR --msa {input.combined_fas} --threads {params.THREADS} --tree pars{{3}} --force"
+#end rule -- raxml
+
+rule annotate:
+    input:
+       in_tree = rules.raxml.output.combined_tree,
+       in_compressed_fas = rules.tn93_cluster_query.output.out_fasta
+    output:
+       out_int_tree = os.path.join(OUTDIR, "{GENE}.int.nwk"),
+       out_clade_tree = os.path.join(OUTDIR, "{GENE}.clade.nwk"),
+       out_full_tree = os.path.join(OUTDIR, "{GENE}.full.nwk")
+    conda: 'environment.yml'
+    shell:
+       "bash scripts/annotate.sh {input.in_tree} 'REFERENCE' {input.in_compressed_fas} {LABEL} {BASEDIR}"
+#end rule annotate
+
+######################################################################
+#---------------------Selection analyses ----------------------------#
+######################################################################
+
+rule slac:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.SLAC.json")
+    conda: 'environment.yml'
+    shell:
+        "mpirun -np {PPN} HYPHYMPI  SLAC --alignment {input.in_msa} --samples 0 --tree {input.in_tree} --output {output.output}"
+#end rule -- slac
+
+rule bgm:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.combined.fas.BGM.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy BGM --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+#end rule -- bgm
+
+rule fel:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.FEL.json")
+    conda: 'environment.yml'
+    shell:
+        "mpirun -np {PPN} HYPHYMPI FEL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+#end rule -- fel
+
+rule meme:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.MEME.json")
+    conda: 'environment.yml'
+    shell:
+        "mpirun -np {PPN} HYPHYMPI MEME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+#end rule -- MEME
+
+# These are exlcuded from Minimal run (not implemented)
+rule absrel:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.ABSREL.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy ABSREL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+#end rule -- absrel
+
+rule busted:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree_clade = rules.annotate.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.BUSTEDS.json")
+    conda: 'environment.yml'
+    shell:
+        "mpirun -np {PPN} HYPHYMPI BUSTED --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
+#end rule -- busted
+
+rule relax:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree_clade = rules.annotate.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.RELAX.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy RELAX --alignment {input.in_msa} --models Minimal --tree {input.in_tree_clade} --output {output.output} --test {LABEL} --reference Reference --starting-points 10 --srv Yes"
+#end rule -- relax
+# End exclusion --
+
+rule prime:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.PRIME.json")
+    conda: 'environment.yml'
+    shell:
+        "mpirun -np {PPN} HYPHYMPI PRIME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+#end rule -- prime
+
+rule meme_full:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree_full = rules.annotate.output.out_full_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.MEME-full.json")
+    conda: 'environment.yml'
+    shell:
+        "mpirun -np {PPN} HYPHYMPI MEME --alignment {input.in_msa} --tree {input.in_tree_full} --output {output.output} --branches {LABEL}"
+#end rule -- meme_full
+
+rule fade:
+    input:
+        in_msa = rules.convert_to_protein.output.protein_fas,
+        in_tree_clade = rules.annotate.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.FADE.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy FADE --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL}"
+#end rule -- fade
+
+# cFEL
+rule cfel:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree_clade = rules.annotate.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.CFEL.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy contrast-fel --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branch-set {LABEL} --branch-set Reference"
+#end rule -- cfel
+
+rule generate_report:
+    input:
+        expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.FADE.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.MEME-full.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.PRIME.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.ABSREL.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.BUSTEDS.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.RELAX.json"), GENE=genes)
+    output:
+        SUMMARY_JSON = os.path.join(OUTDIR, LABEL + "_summary.json"),
+        ANNOTATION_JSON = os.path.join(OUTDIR, LABEL + "_annotation.json")
+    conda: 'environment.yml'
+    shell:
+         "bash scripts/process_json.sh {BASEDIR} {LABEL}"
+#end rule generate_report
+

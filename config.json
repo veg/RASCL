@@ -1,0 +1,12 @@
+{
+  "LABEL":"BA.2-03152022",
+  "WholeGenomeSeqs":"lineage_BA_2.fasta",
+  "max_ref":"200",
+  "max_query":"500",
+  "threshold_query":"0.0005",
+  "threshold_ref":"0.001",
+  "clustering_threshold": 0.00075,
+  "outlier_threshold": 0.002,
+  "min_seqs_cluster": 3
+  
+}

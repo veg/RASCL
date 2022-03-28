@@ -1,15 +1,21 @@
+# Imports
 import sys, csv, json, datetime
 from collections import Counter
-
 from Bio import SeqIO
 
-
+# Declares
 variants = {}
-
 byPosition = []
 N          = 0
 dates      = Counter()
 
+# Input parameters
+
+input_msa = snakemake.params.input_msa
+output = snakemake.params.output
+
+
+# Main ---
 with open(sys.argv[1]) as handle:
     for record in SeqIO.parse(handle, "fasta"):
         N += 1
@@ -17,7 +23,8 @@ with open(sys.argv[1]) as handle:
             D = datetime.datetime.strptime (record.id.split ("|")[-1], "%Y-%m-%d").strftime ("%Y%m%d")
         except Exception as e:
             D = None
-            
+        #end try
+
         dates [D] += 1
 
         S = str (record.seq)
@@ -26,11 +33,14 @@ with open(sys.argv[1]) as handle:
                 byPosition.append (Counter())
             codon = S[i:i+3]
             byPosition[i//3][codon] += 1
-           
+        #end inner for
+    #end outer for
+#end with
+
+
 variants ['N']      = N            
 variants ['counts'] = byPosition
 variants ['dates'] = dates
-
 hbp        = []
 H          = 0
 
@@ -57,10 +67,12 @@ with open(sys.argv[2]) as handle:
                 hbp.append (Counter())
             codon = S[i:i+3]
             hbp[i//3][codon] += 1
-           
+        #end for
+    #end for
+#end with          
+
 variants ['H']      = H            
 variants ['haplotypes'] = hbp
-
 hbpa        = []
 HA          = 0
 
@@ -74,12 +86,22 @@ with open(sys.argv[3]) as handle:
                 hbpa.append (Counter())
             codon = S[i:i+3]
             hbpa[i//3][codon] += 1
-           
+        #end for
+    #end for
+#end with
+
+
 variants ['HA']             = HA            
 variants ['all-haplotypes'] = hbpa
     
+# Output files
 json.dump (variants, sys.stdout)
 json.dump (dotplot, sys.stderr)
+
+
+# End of file
+
+
 
         
                 

@@ -11,7 +11,7 @@ output_file2 = snakemake.params.output2
 
 
 #if len(sys.argv) > 2:
-if input_file2 != "":
+if input_file2 != "" and input_file2 != input_file:
     with open (input_file2, "r") as fh:
         cluster_json = json.load (fh)
         largest = max ([len(k['members']) for k in cluster_json])

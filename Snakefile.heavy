@@ -1,5 +1,4 @@
-#
-#Snakefile for SARS-CoV-2 Clades analysis with prefiltering (RASCL_HEAVY).
+# Snakefile for SARS-CoV-2 Clades analysis with prefiltering (RASCL_HEAVY).
 # 2022
 # @Author: Alexander G Lucaci
 
@@ -35,10 +34,10 @@ print(f"Input whole genome fasta: {INPUT_WG}")
 
 # End -- User defined settings ----------------------------------------
 
-#genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
 
 # For debugging or single gene analyses
-genes = ["S"]
+#genes = ["S", "M"]
 
 # Basename of INPUT_WG (used in rule clean)
 INPUT_WG_basename = os.path.basename(INPUT_WG)
@@ -72,23 +71,23 @@ rule all:
         expand(os.path.join(OUTDIR, "{GENE}.query.bam"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.OG"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.SA"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.clusters.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.fas"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t0.clusters.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.all.fas"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t1.clusters.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq.fas"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t2.clusters.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq-all.fas"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled.nwk"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled-internal.nwk"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.SLAC.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BGM.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BUSTEDS.json"), GENE=genes),
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.FEL.json"), GENE=genes), 
-        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.MEME.json"), GENE=genes)
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.u.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.u.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.t0.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.all.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.t1.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.t2.clusters.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq-all.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled.nwk"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled-internal.nwk"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.SLAC.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.BGM.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.BUSTEDS.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.FEL.json"), GENE=genes), 
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.MEME.json"), GENE=genes)
 #end rule -- all
 
 print("# Starting main analysis")
@@ -102,9 +101,8 @@ rule clean:
        "bash scripts/cleaner.sh {input.in_wg} {output.out_wg}"
 #end rule -- clean
 
-
 # PREFILTERING ----------
-SC2_GENE_MAP = {"S": {"start":20000, "end": 26000}}
+#SC2_GENE_MAP = {"S": {"start":20000, "end": 26000}}
 rule trim:
     output:
         output = os.path.join(OUTDIR, INPUT_WG_basename + ".fa.{GENE}.raw")
@@ -112,11 +110,13 @@ rule trim:
         in_wg = rules.clean.output.out_wg,
         #start_site = SC2_GENE_MAP["{GENE}"]["start"],
         #end_site = SC2_GENE_MAP["{GENE}"]["end"],
-        start_site = 20000,
-        end_site = 26000,
+        #start_site = 20000,
+        #end_site = 26000,
+        gene="{GENE}",
         output = os.path.join(OUTDIR, INPUT_WG_basename + ".fa.{GENE}.raw")
     script:
-       "scripts/filter-sites.py"
+       #"scripts/filter-sites.py"
+       "scripts/filter-sites.genemap.py"
 #end rule
 # End PREFILTERING -------
 
@@ -130,7 +130,7 @@ rule bealign_query:
         output = os.path.join(OUTDIR, "{GENE}.query.bam")
     shell:
         "bealign -r {input.in_gene_ref_seq} -m HIV_BETWEEN_F {input.in_genome} {output.output}"
-#end rule -- bealign
+#end rule 
 
 rule bam2msa_query:
     input:
@@ -139,7 +139,7 @@ rule bam2msa_query:
         out_msa = os.path.join(OUTDIR, "{GENE}.query.msa.OG")
     shell:
         "bam2msa {input.in_bam} {output.out_msa}"        
-#end rule -- bam2msa_query
+#end rule 
 
 rule strike_ambigs_query:
    input:
@@ -148,70 +148,81 @@ rule strike_ambigs_query:
        out_strike_ambigs = os.path.join(OUTDIR, "{GENE}.query.msa.SA")
    shell:
       "{hyphy} scripts/strike-ambigs.bf --alignment {input.in_msa} --output {output.out_strike_ambigs}"
-#end rule -- strike_ambigs_query
+#end rule 
 
 # --- Additional modifications ---
 
 rule exact_copies:
+    input:
+        input = rules.strike_ambigs_query.output.out_strike_ambigs
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.clusters.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.u.clusters.json")
     params:
         input = rules.strike_ambigs_query.output.out_strike_ambigs,
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.clusters.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.u.clusters.json")
     script:
         "scripts/exact-copies.py"
 # end rule
 
-
 rule cluster_processor:
+    input:
+         input = rules.exact_copies.output.output,
+         input2 = rules.exact_copies.output.output # Hack
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.fas")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.u.fas")
     params:
         input = rules.exact_copies.output.output,
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.u.fas")
+        input2 = rules.exact_copies.output.output, # Hack
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.u.fas")
     script:
         "scripts/cluster-processor.py"
 # end rule
 
 #$TN93 -f -t 0.0 ${FILE}.S.u.fas > ${FILE}.t0.clusters.json
 #$P3 python/cluster-processor.py ${FILE}.t0.clusters.json > ${FILE}.S.all.fas
-#
 
 rule tn93_t0:
    input:
        input = rules.cluster_processor.output.output
    output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t0.clusters.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.t0.clusters.json")
    shell:
         "tn93-cluster -f -t 0.0 {input.input} > {output.output}"
 #end rule
 
 rule cluster_processor_t0:
+    input:
+        input = rules.tn93_t0.output.output,
+        input2 = rules.exact_copies.output.output # Hack
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.all.fas")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.all.fas")
     params:
         input = rules.tn93_t0.output.output,
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.all.fas")
+        input2 = rules.exact_copies.output.output, # Hack
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.all.fas")
     script:
         "scripts/cluster-processor.py"
 # end rule
-
 
 rule tn93_t1:
    input:
        input = rules.cluster_processor_t0.output.output
    output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t1.clusters.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.t1.clusters.json")
    shell:
         "tn93-cluster -f -t 0.00075 {input.input} > {output.output}"
 #end rule
 
 rule cluster_processor_t1:
+    input:
+        input = rules.tn93_t1.output.output,
+        input2 = rules.exact_copies.output.output # Hack
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq.fas")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq.fas")
     params:
         input = rules.tn93_t1.output.output,
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq.fas")
+        input2 = rules.exact_copies.output.output, # Hack
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq.fas")
     script:
         "scripts/cluster-processor.py"
 # end rule
@@ -220,27 +231,35 @@ rule tn93_t2:
    input:
        input = rules.cluster_processor_t1.output.output
    output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.t2.clusters.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.t2.clusters.json")
    shell:
         "tn93-cluster -f -t 0.002 {input.input} > {output.output}"
 #end rule
 
-
 rule cluster_processor_t2:
+    input:
+        input = rules.tn93_t1.output.output,
+        input2 = rules.tn93_t2.output.output
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq-all.fas")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq-all.fas")
     params:
         input = rules.tn93_t1.output.output,
         input2 = rules.tn93_t2.output.output,
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq-all.fas"),
-        output2 = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.blacklist.txt")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq-all.fas"),
+        output2 = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.blacklist.txt")
     script:
         "scripts/cluster-processor.py"
 # end rule
 
 rule cluster_processor_consensus:
+    input:
+        input_msa = rules.strike_ambigs_query.output.out_strike_ambigs,
+        input_uniq_all = rules.cluster_processor_t2.output.output,
+        input_t1_clusters = rules.tn93_t1.output.output,
+        input_t0_clusters = rules.tn93_t0.output.output,
+        input_u_clusters = rules.exact_copies.output.output
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas")
     params:
         cluster_min = 3,
         input_msa = rules.strike_ambigs_query.output.out_strike_ambigs,
@@ -248,7 +267,7 @@ rule cluster_processor_consensus:
         input_t1_clusters = rules.tn93_t1.output.output,
         input_t0_clusters = rules.tn93_t0.output.output,
         input_u_clusters = rules.exact_copies.output.output,
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas")
     script:
         "scripts/cluster-processor-consensus.py"
 # end rule
@@ -259,7 +278,7 @@ rule raxml_uniq2:
     input:
         input = rules.cluster_processor_consensus.output.output
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree")
     shell:
         "raxml-ng --msa {input.input} --threads {params.THREADS} --tree pars{{5}} --model GTR+G+I"
 #end rule -- raxml
@@ -268,8 +287,8 @@ rule annotate_fake:
     input:
        input = rules.raxml_uniq2.output.output
     output:
-       out_clade_tree = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled.nwk"),
-       out_int_tree = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled-internal.nwk")
+       out_clade_tree = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled.nwk"),
+       out_int_tree = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.raxml.bestTree.labeled-internal.nwk")
     shell:
         "cp {input.input} {output.out_clade_tree} && cp {input.input} {output.out_int_tree}"
 #end rule
@@ -279,7 +298,7 @@ rule slac_uniq2:
         in_msa =  rules.cluster_processor_consensus.output.output,
         in_tree = rules.annotate_fake.output.out_clade_tree
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.SLAC.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.SLAC.json")
     shell:
         "mpirun -np {PPN} {hyphy} SLAC --alignment {input.in_msa} --samples 0 --tree {input.in_tree} --output {output.output} --branches All --kill-zero-lengths Constrain"
 #end rule 
@@ -289,7 +308,7 @@ rule bgm_uniq2:
         in_msa =  rules.cluster_processor_consensus.output.output,
         in_tree = rules.annotate_fake.output.out_int_tree
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BGM.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.BGM.json")
     shell:
         "{hyphy} BGM --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal --min-subs 2 --steps 1000000 --samples 1000 --burn-in 100000"
 #end rule 
@@ -299,7 +318,7 @@ rule busteds_uniq2:
         in_msa =  rules.cluster_processor_consensus.output.output,
         in_tree = rules.annotate_fake.output.out_int_tree
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.BUSTEDS.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.BUSTEDS.json")
     shell:
         "mpirun -np {PPN} {hyphy} BUSTED --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal --rates 3 --starting-points 5"
 #end rule
@@ -309,7 +328,7 @@ rule fel_uniq2:
         in_msa =  rules.cluster_processor_consensus.output.output,
         in_tree = rules.annotate_fake.output.out_int_tree
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.FEL.json") 
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.FEL.json") 
     shell:
         "mpirun -np {PPN} {hyphy} FEL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal --ci Yes"
 #end rule -- fel
@@ -319,15 +338,32 @@ rule meme_uniq2:
         in_msa =  rules.cluster_processor_consensus.output.output,
         in_tree = rules.annotate_fake.output.out_int_tree
     output:
-        output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.query.msa.SA.uniq2.fas.MEME.json")
+        output = os.path.join(OUTDIR, INPUT_WG_basename + ".{GENE}.query.msa.SA.uniq2.fas.MEME.json")
     shell:
         "mpirun -np {PPN} {hyphy} MEME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches Internal"
 #end rule -- MEME
 
+# Catch up
+
+"""
+rule countN:
+    output:
+        #output = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.VariantCounts.json")
+        expand(os.path.join(OUTDIR, INPUT_WG_basename + "{{GENE}}.VariantCounts.{ext}"), ext=["json", "genomes.json"])
+    params:
+        input_msa = rules.strike_ambigs_query.output.out_strike_ambigs,
+        input_all = rules.cluster_processor_t0.output.output,
+        in_uniq =  rules.cluster_processor_consensus.output.output,
+        output1 = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.VariantCounts.json"),
+        output1 = os.path.join(OUTDIR, INPUT_WG_basename + "{GENE}.VariantCounts.json")
+    script:
+        "scripts/countN.py"
+# end rule
+"""
 
 
 # --------------------------------
-
+# --------------------------------
 
 
 

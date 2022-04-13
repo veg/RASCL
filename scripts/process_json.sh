@@ -1,4 +1,7 @@
 #!/bin/bash
+#@Usage: bash scripts/process_json.sh /home/aglucaci/RASCL
+#@Usage: bash scripts/process_json.sh /data/shares/veg/aglucaci/RASCL BA.2-01312022
+
 
 ## Declares
 BASEDIR=$1

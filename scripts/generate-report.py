@@ -797,20 +797,33 @@ for file_name in import_settings.file:
                         }         
                     else:
                         report['prime'] = None #invariable
+        
         # Process FADE results
         #with open (this_file + ".FADE.json", "r") as ph:
-        with open (os.path.join(results_dir, this_file + ".FADE.json"), "r") as ph:
-            fade = json.load (ph)
-            if len (include_in_annotation):
-                for i in include_in_annotation:
-                    report = annotation_json [include_in_annotation[i]]
-                    report['fade'] = {}
-                    for residue, info in fade ["MLE"]["content"].items():
-                        if len (residue) == 1:                    
-                            report['fade'][residue] = {
-                                'rate' : info["0"][i][1],
-                                'BF' : info["0"][i][-1]
-                            }         
+        FADE_JSON = os.path.join(results_dir, this_file + ".FADE.json")
+        if os.path.exists (FADE_JSON):
+            #with open (os.path.join(results_dir, this_file + ".FADE.json"), "r") as ph:
+            with open (FADE_JSON, "r") as ph:
+                fade = json.load (ph)
+                if len (include_in_annotation):
+                    for i in include_in_annotation:
+                        report = annotation_json [include_in_annotation[i]]
+                        report['fade'] = {}
+                        for residue, info in fade ["MLE"]["content"].items():
+                            if len (residue) == 1:                    
+                                report['fade'][residue] = {
+                                    'rate' : info["0"][i][1],
+                                    'BF' : info["0"][i][-1]
+                                }
+                            #end if
+                        #end for
+                    #end for
+                #end if
+            #end with
+        else:
+           # Empty FADE file.
+           pass 
+        #end if         
 
         # Process BGM Results -----------------------------------------
         #if Path(os.path.join(results_dir, this_file + ".combined.fas.BGM.json")).is_file():

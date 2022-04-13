@@ -10,7 +10,7 @@ import csv
 from pathlib import Path
 
 # Declares ------------------------------------------------------------
-with open("snakemake_config.json", "r") as in_sc:
+with open("config.json", "r") as in_sc:
   config = json.load(in_sc)
 #end with
 
@@ -28,8 +28,7 @@ LABEL = config["LABEL"] # add assert
 WholeGenomeSeqs = config["WholeGenomeSeqs"] # add assert
 
 # The script will also look for this specific whole genome fasta within data/{LABEL}/
-#INPUT_WG = os.path.join(BASEDIR, "data", LABEL, WholeGenomeSeqs)
-INPUT_WG = os.path.join(BASEDIR, "data", WholeGenomeSeqs)
+INPUT_WG = os.path.join(BASEDIR, "data", LABEL, WholeGenomeSeqs)
 print(f"Input whole genome fasta: {INPUT_WG}")
 
 # End -- User defined settings ----------------------------------------
@@ -42,9 +41,14 @@ genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9",
 # Basename of INPUT_WG (used in rule clean)
 INPUT_WG_basename = os.path.basename(INPUT_WG)
 
-# Reference sequence dirs
+# Reference NCBI sequence dirs ---
 REF_SEQ_DIR = os.path.join(BASEDIR, "data", "ReferenceSeq")
-REF_ALN_DIR = os.path.join(BASEDIR, "data", "ReferenceSetViPR")
+
+# Reference whole genomes (ViPR) ---
+#REF_ALN_DIR = os.path.join(BASEDIR, "data", "ReferenceSetViPR")
+REF_ALN = os.path.join(BASEDIR, "data", "ReferenceSetViPR-WholeGenomes-Jan2022")
+
+print("# Reference Whole genomes:", REF_ALN)
 
 # Set output directory
 OUTDIR = os.path.join(BASEDIR, "results", LABEL)
@@ -91,19 +95,19 @@ rule all:
 #end rule -- all
 
 # Rules -- Main analysis ----------------------------------------------
-rule clean:
+rule cleaner:
     input:
         in_wg = INPUT_WG
     output:
         out_wg = os.path.join(OUTDIR, INPUT_WG_basename + ".fa")
     shell:
        "bash scripts/cleaner.sh {input.in_wg} {output.out_wg}"
-#end rule -- clean
+#end rule
 
 # PROCESS QUERY SEQUENCES
 rule bealign_query:
     input:
-        in_genome = rules.clean.output.out_wg,
+        in_genome = rules.cleaner.output.out_wg,
         in_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
     output:
         output = os.path.join(OUTDIR, "{GENE}.query.bam")
@@ -146,7 +150,8 @@ rule tn93_cluster_query:
 # Do the above for background sequences. --------------------------------------------
 rule bealign_ref:
     input:
-        in_genome_ref = os.path.join(REF_ALN_DIR, "sequences.{GENE}_nuc.compressed.fas"),
+        #in_genome_ref = os.path.join(REF_ALN_DIR, "sequences.{GENE}_nuc.compressed.fas"),
+        in_genome_ref = REF_ALN,
         in_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
     output:
         output = os.path.join(OUTDIR, "{GENE}.reference.bam")
@@ -251,7 +256,7 @@ rule slac:
         output = os.path.join(OUTDIR, "{GENE}.SLAC.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI  SLAC --alignment {input.in_msa} --samples 0 --tree {input.in_tree} --output {output.output}"
+        "hyphy   SLAC --alignment {input.in_msa} --samples 0 --tree {input.in_tree} --output {output.output}"
 #end rule -- slac
 
 rule bgm:
@@ -273,7 +278,7 @@ rule fel:
         output = os.path.join(OUTDIR, "{GENE}.FEL.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI FEL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+        "hyphy  FEL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
 #end rule -- fel
 
 rule meme:
@@ -284,7 +289,7 @@ rule meme:
         output = os.path.join(OUTDIR, "{GENE}.MEME.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI MEME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+        "hyphy  MEME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
 #end rule -- MEME
 
 # These are exlcuded from Minimal run (not implemented)
@@ -307,7 +312,7 @@ rule busted:
         output = os.path.join(OUTDIR, "{GENE}.BUSTEDS.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI BUSTED --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
+        "hyphy  BUSTED --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
 #end rule -- busted
 
 rule relax:
@@ -330,7 +335,7 @@ rule prime:
         output = os.path.join(OUTDIR, "{GENE}.PRIME.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI PRIME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+        "hyphy  PRIME --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
 #end rule -- prime
 
 rule meme_full:
@@ -341,7 +346,7 @@ rule meme_full:
         output = os.path.join(OUTDIR, "{GENE}.MEME-full.json")
     conda: 'environment.yml'
     shell:
-        "mpirun -np {PPN} HYPHYMPI MEME --alignment {input.in_msa} --tree {input.in_tree_full} --output {output.output} --branches {LABEL}"
+        "hyphy  MEME --alignment {input.in_msa} --tree {input.in_tree_full} --output {output.output} --branches {LABEL}"
 #end rule -- meme_full
 
 rule fade:

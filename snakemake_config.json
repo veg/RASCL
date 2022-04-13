@@ -1,8 +1,0 @@
-{
-  "LABEL":"TEST",
-  "WholeGenomeSeqs":"TEST.fasta",
-  "max_ref":"200",
-  "max_query":"500",
-  "threshold_query":"0.0005",
-  "threshold_ref":"0.001"
-}

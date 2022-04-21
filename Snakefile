@@ -46,7 +46,7 @@ REF_SEQ_DIR = os.path.join(BASEDIR, "data", "ReferenceSeq")
 
 # Reference whole genomes (ViPR) ---
 #REF_ALN_DIR = os.path.join(BASEDIR, "data", "ReferenceSetViPR")
-REF_ALN = os.path.join(BASEDIR, "data", "ReferenceSetViPR-WholeGenomes-Jan2022")
+REF_ALN = os.path.join(BASEDIR, "data", "ReferenceSetViPR-WholeGenomes-Jan2022", "RandomDS_ViPR_Jan2022_10k_trim.fasta")
 
 print("# Reference Whole genomes:", REF_ALN)
 

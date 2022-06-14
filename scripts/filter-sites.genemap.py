@@ -2,20 +2,28 @@ import sys, csv, json
 from collections import Counter
 from Bio import SeqIO
 
-
 # Arguments
 #ranges = [int(k) for k in sys.argv[2].split (',')]
 #start = sys.argv[2]
 #end = sys.argv[3]
 
-input_file = snakemake.params.in_wg
+#input_file = snakemake.params.in_wg
+input_file = sys.argv[1]
 #start = snakemake.params.start_site
 #end = snakemake.params.end_site
-gene = snakemake.params.gene
+#gene = snakemake.params.gene
+gene = sys.argv[2]
 
 #output_file = sys.argv[1]
-output_file = snakemake.params.output
+#output_file = snakemake.params.output
+output_file = sys.argv[3]
 
+
+print("# in filter-sites.genemap.py")
+
+print("# Input file:", input_file)
+print("# Gene:", gene)
+print("# Output file:", output_file) 
 
 # Gene map
 # Based on coordinates of SC2.
@@ -56,22 +64,17 @@ end = SC2_GENE_MAP[gene]["end"]
 
 #with open(sys.argv[1]) as handle:
 with open(input_file) as handle:
-    for record in SeqIO.parse(handle, "fasta"):
-        s = str (record.seq)
-        if len (s) > 28000:
-            #print ('>%s\n%s\n' % (record.id, s[ranges[0]:ranges[1]]))
-            
-            #print ('>%s\n%s\n' % (record.id, s[start:end]))
-            with open(output_file, "a") as fh:
+    with open(output_file, "a") as fh:
+        for record in SeqIO.parse(handle, "fasta"):
+            s = str (record.seq)
+            if len (s) > 28000:
                 print ('>%s\n%s\n' % (record.id, s[start:end]), file=fh)
-            #end with
-            fh.close()
-        #end if
-    #end for
+            #end if
+         #end for
+    #end with
 #end with
 
-handle.close()
 
 
-        
+#end of file        
                 

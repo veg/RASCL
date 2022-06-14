@@ -5,8 +5,12 @@ from Bio import SeqIO
 
 sequences = {}
 
-input_file = snakemake.params.input
-output_file = snakemake.params.output
+#input_file = snakemake.params.input
+#output_file = snakemake.params.output
+
+input_file  = sys.argv[1]
+output_file = sys.argv[2]
+
 
 
 #with open(sys.argv[1]) as handle:))

@@ -10,13 +10,29 @@ N          = 0
 dates      = Counter()
 
 # Input parameters
+#input_msa = snakemake.params.input_msa
+#input_all = snakemake.params.input_all
+#input_uniq = snakemake.params.in_uniq
+#output1 = snakemake.params.output1
+#output2 = snakemake.params.output2
 
-input_msa = snakemake.params.input_msa
-output = snakemake.params.output
+# Input parameters
+input_msa  = sys.argv[1]
+input_all  = sys.argv[2]
+input_uniq = sys.argv[3]
+output1    = sys.argv[4]
+output2    = sys.argv[5]
 
+"""
+        input_msa = rules.strike_ambigs_query.output.out_strike_ambigs,
+        input_all = rules.cluster_processor_t0.output.output,
+        in_uniq =  rules.cluster_processor_consensus.output.output,
+
+"""
 
 # Main ---
-with open(sys.argv[1]) as handle:
+#with open(sys.argv[1]) as handle:
+with open(input_msa) as handle:
     for record in SeqIO.parse(handle, "fasta"):
         N += 1
         try:
@@ -37,7 +53,6 @@ with open(sys.argv[1]) as handle:
     #end outer for
 #end with
 
-
 variants ['N']      = N            
 variants ['counts'] = byPosition
 variants ['dates'] = dates
@@ -55,7 +70,8 @@ mapping = {
 
 dotplot = []
 
-with open(sys.argv[2]) as handle:
+#with open(sys.argv[2]) as handle:
+with open(input_uniq) as handle:
     for record in SeqIO.parse(handle, "fasta"):
         H += 1
         S = str (record.seq)
@@ -76,7 +92,8 @@ variants ['haplotypes'] = hbp
 hbpa        = []
 HA          = 0
 
-with open(sys.argv[3]) as handle:
+#with open(sys.argv[3]) as handle:
+with open(input_all) as handle:
     for record in SeqIO.parse(handle, "fasta"):
         HA += 1
         S = str (record.seq)
@@ -95,8 +112,17 @@ variants ['HA']             = HA
 variants ['all-haplotypes'] = hbpa
     
 # Output files
-json.dump (variants, sys.stdout)
-json.dump (dotplot, sys.stderr)
+
+#json.dump (variants, sys.stdout)
+#json.dump (dotplot, sys.stderr)
+
+with open(output1, 'w') as f:
+    json.dump (variants, f)
+
+
+with open(output2, 'w') as fh:
+    json.dump (dotplot, fh)
+
 
 
 # End of file

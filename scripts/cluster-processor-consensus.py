@@ -13,13 +13,25 @@ sep_char = '/'
 SL = 0
 nucs = set (["A","C","G","T"])
 
-cluster_min = snakemake.params.cluster_min
-input_msa = snakemake.params.input_msa
-input_uniq_all = snakemake.params.input_uniq_all
-input_t1_clusters = snakemake.params.input_t1_clusters
-input_t0_clusters = snakemake.params.input_t0_clusters
-input_u_clusters = snakemake.params.input_u_clusters
-output = snakemake.params.output
+#cluster_min = snakemake.params.cluster_min
+#input_msa = snakemake.params.input_msa
+#input_uniq_all = snakemake.params.input_uniq_all
+#input_t1_clusters = snakemake.params.input_t1_clusters
+#input_t0_clusters = snakemake.params.input_t0_clusters
+#input_u_clusters = snakemake.params.input_u_clusters
+#output = snakemake.params.output
+
+
+
+input_msa         = sys.argv[1]
+input_uniq_all    = sys.argv[2]
+input_t1_clusters = sys.argv[3]
+input_t0_clusters = sys.argv[4]
+input_u_clusters  = sys.argv[5]
+#cluster_min       = sys.argv[6]
+output            = sys.argv[6]
+
+
 
 # Helper functions
 def seq_id (id):
@@ -154,7 +166,8 @@ for f in [input_t1_clusters, input_t0_clusters, input_u_clusters]:
 #S = 0 
 
 #minL = int (sys.argv[1])
-minL = int(cluster_min)
+#minL = int(cluster_min)
+minL = int(3)
 # group by consensus because some of the sequences may compress to the same consensus
 by_consensus = {}
 

@@ -2,29 +2,35 @@ import sys, json
 
 blacklist = set ()
 
-input_file = snakemake.params.input
+#input_file = snakemake.params.input
 
-input_file2 = ""
-input_file2 = snakemake.params.input2
-output_file = snakemake.params.output
-output_file2 = snakemake.params.output2
+#input_file2 = ""
+#input_file2 = snakemake.params.input2
+#output_file = snakemake.params.output
+#output_file2 = snakemake.params.output2
 
+input_file = sys.argv[1]
+output_file = sys.argv[2]
 
-#if len(sys.argv) > 2:
-if input_file2 != "" and input_file2 != input_file:
-    with open (input_file2, "r") as fh:
-        cluster_json = json.load (fh)
-        largest = max ([len(k['members']) for k in cluster_json])
-        for k in cluster_json:
-            if k["size"] != largest:
-                for n in k["members"]:
-                    blacklist.add (n)
-                #end for
-            #end if
-        #end for
-    #end with   
+if len(sys.argv) > 2:
+
+    input_file2 = ""
+    output_file2 = output_file + ".blacklist.list"
+
+    if input_file2 != "" and input_file2 != input_file:
+        with open (input_file2, "r") as fh:
+            cluster_json = json.load (fh)
+            largest = max ([len(k['members']) for k in cluster_json])
+            for k in cluster_json:
+                if k["size"] != largest:
+                    for n in k["members"]:
+                        blacklist.add (n)
+                    #end for
+                #end if
+            #end for
+        #end with   
+    #end if
 #end if
-   
 
 #with open (sys.argv[1], "r") as fh:
 with open (input_file, "r") as fh:

@@ -1,8 +1,12 @@
 {
-  "LABEL":"BA.5-04132022",
-  "WholeGenomeSeqs":"gisaid_hcov-19_2022_04_13_14.fasta",
+  "label":"flu-latest",
+  "queryDataDir":"flu-query",
+  "backgroundDataDir":"flu-background",
+  "fileEnding": ".fasta",
+  "referenceSequencesDataDir": "RefSeqs",
   "max_ref":"200",
   "max_query":"500",
   "threshold_query":"0.0005",
-  "threshold_ref":"0.001"
+  "threshold_ref":"0.001",
+  "hyphy-analyses":"/home/aglucaci/hyphy-analyses"
 }

@@ -11,8 +11,9 @@ There is an assumption that the freely available [Anaconda](https://anaconda.org
 
 #### To install -- Steps necessary to complete before running
 1. `git clone https://github.com/veg/RASCL.git RASCL`
-2. `conda env create -f environment.yml`.  This will create a virtual environment called (RASCL) with the necessary dependencies.
-3. At this point, run `conda activate RASCL` and your environment will be ready to go.
+2. `cd RASCL`
+3. `conda env create -f environment.yml`.  This will create a virtual environment called (RASCL) with the necessary dependencies.
+4. At this point, run `conda activate RASCL` and your environment will be ready to go.
 
 #### Configuration -- Steps necessary to complete before running
 

@@ -1,15 +1,20 @@
-# Snakefile for SARS-CoV-2 Clades analysis (RASCL).
-# 2021
-# @Author: Alexander Lucaci, Jordan Zehr, Stephen Shank
+# --------------------------------------------------------------------
+# Snakefile for RAPID ASSESSMENT OF SELECTION IN CLADES (RASCL).
+# 2022
+# --------------------------------------------------------------------
 
-# Imports -------------------------------------------------------------
+# --------------------------------------------------------------------
+# Imports
+# --------------------------------------------------------------------
 import os
 import sys
 import json
 import csv
 from pathlib import Path
 
-# Declares ------------------------------------------------------------
+# --------------------------------------------------------------------
+# Declares
+# --------------------------------------------------------------------
 with open("config.json", "r") as in_sc:
   config = json.load(in_sc)
 #end with
@@ -33,10 +38,10 @@ print(f"Input whole genome fasta: {INPUT_WG}")
 
 # End -- User defined settings ----------------------------------------
 
-genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
+#genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", "nsp9", "nsp10", "helicase", "exonuclease", "endornase", "S", "E", "M", "N", "ORF3a", "ORF6", "ORF7a", "ORF8" ,"RdRp", "methyltransferase"]
 
 # For debugging or single gene analyses
-#genes = ["S"]
+genes = ["S"]
 
 # Basename of INPUT_WG (used in rule clean)
 INPUT_WG_basename = os.path.basename(INPUT_WG)
@@ -46,7 +51,9 @@ REF_SEQ_DIR = os.path.join(BASEDIR, "data", "ReferenceSeq")
 
 # Reference whole genomes (ViPR) ---
 #REF_ALN_DIR = os.path.join(BASEDIR, "data", "ReferenceSetViPR")
-REF_ALN = os.path.join(BASEDIR, "data", "ReferenceSetViPR-WholeGenomes-Jan2022", "RandomDS_ViPR_Jan2022_10k_trim.fasta")
+#REF_ALN = os.path.join(BASEDIR, "data", "ReferenceSetViPR-WholeGenomes-Jan2022", "RandomDS_ViPR_Jan2022_10k_trim.fasta")
+#REF_ALN = os.path.join(BASEDIR, "data", "ReferenceSetViPR-VOIVOC_May2022", "VOI_VOC.fasta")
+REF_ALN = os.path.join(BASEDIR, "data", "ReferenceSet_Nextstrain", "06122022", "WholeGenomes.fasta")
 
 print("# Reference Whole genomes:", REF_ALN)
 
@@ -59,6 +66,11 @@ Path(OUTDIR).mkdir(parents=True, exist_ok=True)
 
 # Settings, these can be passed in or set in a config.json type file
 PPN = cluster["__default__"]["ppn"] 
+
+# Hyphy-analyses
+HYPHY_ANALYSES_DIR = config["hyphy-analyses"]
+FMM = os.path.join(HYPHY_ANALYSES_DIR, "FitMultiModel", "FitMultiModel.bf")
+BUSTEDSMH = os.path.join(HYPHY_ANALYSES_DIR, "BUSTED-MH", "BUSTED-MH.bf")
 
 # Rule All ------------------------------------------------------------
 rule all:
@@ -90,6 +102,13 @@ rule all:
         expand(os.path.join(OUTDIR, "{GENE}.BUSTEDS.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.RELAX.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.ABSREL.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.ABSRELS.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.ABSREL-MH.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.ABSRELS-MH.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.BUSTEDS-MH.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.FMM.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.RELAX-MH.json"), GENE=genes),
         os.path.join(OUTDIR, LABEL + "_summary.json"),
         os.path.join(OUTDIR, LABEL + "_annotation.json")
 #end rule -- all
@@ -293,15 +312,15 @@ rule meme:
 #end rule -- MEME
 
 # These are exlcuded from Minimal run (not implemented)
-rule absrel:
-    input:
-        in_msa = rules.combine.output.output,
-        in_tree = rules.annotate.output.out_int_tree
-    output:
-        output = os.path.join(OUTDIR, "{GENE}.ABSREL.json")
-    conda: 'environment.yml'
-    shell:
-        "hyphy ABSREL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+#rule absrel:
+#    input:
+#        in_msa = rules.combine.output.output,
+#        in_tree = rules.annotate.output.out_int_tree
+#    output:
+#        output = os.path.join(OUTDIR, "{GENE}.ABSREL.json")
+#    conda: 'environment.yml'
+#    shell:
+#        "hyphy ABSREL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
 #end rule -- absrel
 
 rule busted:
@@ -312,7 +331,7 @@ rule busted:
         output = os.path.join(OUTDIR, "{GENE}.BUSTEDS.json")
     conda: 'environment.yml'
     shell:
-        "hyphy  BUSTED --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
+        "hyphy BUSTED --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
 #end rule -- busted
 
 rule relax:
@@ -372,11 +391,96 @@ rule cfel:
         "hyphy contrast-fel --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branch-set {LABEL} --branch-set Reference"
 #end rule -- cfel
 
+# MH Models ---
+# aBSREL is left off, I am including here as a comparison for aBSREL-MH
+rule absrel:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.ABSREL.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy ABSREL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL}"
+#end rule -- absrel
+
+rule absrels:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.ABSRELS.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy ABSREL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL} --srv Yes"
+#end rule -- absrel
+
+rule absrelmh:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.ABSREL-MH.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy ABSREL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL} --multiple-hits Double+Triple"
+#end rule 
+
+rule absrelsmh:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree = rules.annotate.output.out_int_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.ABSRELS-MH.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy ABSREL --alignment {input.in_msa} --tree {input.in_tree} --output {output.output} --branches {LABEL} --multiple-hits Double+Triple --srv Yes"
+#end rule 
+
+rule bustedmh:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree_clade = rules.annotate.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.BUSTEDS-MH.json")
+    conda: 'environment.yml'
+    shell:
+        #"mpirun -np {PPN} HYPHYMPI {BUSTEDSMH} --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
+        "hyphy {BUSTEDSMH} --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
+#end rule -- busted
+
+rule fmm:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree_clade = rules.annotate.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.FMM.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy {FMM} --alignment {input.in_msa} --tree {input.in_tree_clade} --output {output.output} --triple-islands Yes"
+#end rule -- busted
+
+# RELAX-MH
+rule relax_mh:
+    input:
+        in_msa = rules.combine.output.output,
+        in_tree_clade = rules.annotate.output.out_clade_tree
+    output:
+        output = os.path.join(OUTDIR, "{GENE}.RELAX-MH.json")
+    conda: 'environment.yml'
+    shell:
+        "hyphy RELAX --alignment {input.in_msa} --models Minimal --tree {input.in_tree_clade} --output {output.output} --test {LABEL} --reference Reference --starting-points 10 --srv Yes --multiple-hits Double+Triple"
+#end rule -- relax
+
 rule generate_report:
     input:
+        expand(os.path.join(OUTDIR, "{GENE}.SLAC.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.FEL.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.MEME.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.CFEL.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.FADE.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.MEME-full.json"), GENE=genes),
+        expand(os.path.join(OUTDIR, "{GENE}.FADE.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.PRIME.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.ABSREL.json"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.BUSTEDS.json"), GENE=genes),

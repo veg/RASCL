@@ -196,7 +196,7 @@ rule bealign_ref:
     output:
         output = os.path.join(OUTDIR, "{GENE}.reference.bam")
     shell:
-        "bealign -r {input.input_gene_ref_seq} -m HIV_BETWEEN_F -K {input.input_genome_ref} {output.output}"
+        "bealign -r {input.input_gene_ref_seq} -m HIV_BETWEEN_F -K {input.input_genome} {output.output}"
 #end rule
 
 rule bam2msa_ref:
@@ -210,12 +210,11 @@ rule bam2msa_ref:
 
 rule strike_ambigs_ref:
    input:
-       input_msa = rules.bam2msa_ref.output.input_msa
+       input_msa = rules.bam2msa_ref.output.output_msa
    output:
-       input_strike_ambigs = os.path.join(OUTDIR, "{GENE}.reference.msa.SA")
-   
+       output_strike_ambigs = os.path.join(OUTDIR, "{GENE}.reference.msa.SA")
    shell:
-      "hyphy scripts/strike-ambigs.bf --alignment {input.input_msa} --output {output.input_strike_ambigs}"
+      "hyphy scripts/strike-ambigs.bf --alignment {input.input_msa} --output {output.output_strike_ambigs}"
 #end rule
 
 rule tn93_cluster_ref:
@@ -223,13 +222,13 @@ rule tn93_cluster_ref:
         THRESHOLD_REF = config["threshold_ref"],
         MAX_REF = config["max_ref"],
     input:
-        input_msa = rules.strike_ambigs_ref.output.input_strike_ambigs,
+        input_msa = rules.strike_ambigs_ref.output.output_strike_ambigs,
         input_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
     output:
-        input_fasta = os.path.join(OUTDIR, "{GENE}.reference.compressed.fas"),
-        input_json = os.path.join(OUTDIR, "{GENE}.reference.json")
+        output_fasta = os.path.join(OUTDIR, "{GENE}.reference.compressed.fas"),
+        output_json = os.path.join(OUTDIR, "{GENE}.reference.json")
     shell:
-        "python3 scripts/tn93_cluster.py --input {input.input_msa} --output_fasta {output.input_fasta} --output_json {output.input_json} --threshold {params.THRESHOLD_REF} --max_retain {params.MAX_REF} --reference_seq {input.input_gene_ref_seq}"
+        "python3 scripts/tn93_cluster.py --input {input.input_msa} --output_fasta {output.output_fasta} --output_json {output.output_json} --threshold {params.THRESHOLD_REF} --max_retain {params.MAX_REF} --reference_seq {input.input_gene_ref_seq}"
 #end rule 
 
 #==============================================================================
@@ -239,8 +238,8 @@ rule combine:
     params:
         THRESHOLD_QUERY = config["threshold_query"]
     input:
-        input_compressed_fas = rules.tn93_cluster_query.output.input_fasta,
-        input_msa = rules.tn93_cluster_ref.output.input_fasta,
+        input_compressed_fas = rules.tn93_cluster_query.output.output_fasta,
+        input_msa = rules.tn93_cluster_ref.output.output_fasta,
 	input_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")
     output:
         output = os.path.join(OUTDIR, "{GENE}.combined.fas")
@@ -278,11 +277,11 @@ rule raxml:
 rule annotate:
     input:
        input_tree = rules.raxml.output.combined_tree,
-       input_compressed_fas = rules.tn93_cluster_query.output.input_fasta
+       input_compressed_fas = rules.tn93_cluster_query.output.output_fasta
     output:
-       input_int_tree = os.path.join(OUTDIR, "{GENE}.int.nwk"),
-       input_clade_tree = os.path.join(OUTDIR, "{GENE}.clade.nwk"),
-       input_full_tree = os.path.join(OUTDIR, "{GENE}.full.nwk")
+       output_int_tree = os.path.join(OUTDIR, "{GENE}.int.nwk"),
+       output_clade_tree = os.path.join(OUTDIR, "{GENE}.clade.nwk"),
+       output_full_tree = os.path.join(OUTDIR, "{GENE}.full.nwk")
     shell:
        "bash scripts/annotate.sh {input.input_tree} 'REFERENCE' {input.input_compressed_fas} {LABEL} {BASEDIR}"
 #end rule 
@@ -294,10 +293,9 @@ rule annotate:
 rule slac:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.SLAC.json")
-    
     shell:
         "hyphy   SLAC --alignment {input.input_msa} --samples 0 --tree {input.input_tree} --output {output.output}"
 #end rule -- slac
@@ -305,10 +303,9 @@ rule slac:
 rule bgm:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.combined.fas.BGM.json")
-    
     shell:
         "hyphy BGM --alignment {input.input_msa} --tree {input.input_tree} --output {output.output} --branches {LABEL}"
 #end rule -- bgm
@@ -316,10 +313,9 @@ rule bgm:
 rule fel:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.FEL.json")
-    
     shell:
         "hyphy  FEL --alignment {input.input_msa} --tree {input.input_tree} --output {output.output} --branches {LABEL}"
 #end rule -- fel
@@ -327,10 +323,9 @@ rule fel:
 rule meme:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.MEME.json")
-    
     shell:
         "hyphy  MEME --alignment {input.input_msa} --tree {input.input_tree} --output {output.output} --branches {LABEL}"
 #end rule -- MEME
@@ -338,10 +333,9 @@ rule meme:
 rule busted:
     input:
         input_msa = rules.combine.output.output,
-        input_tree_clade = rules.annotate.output.input_clade_tree
+        input_tree_clade = rules.annotate.output.output_clade_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.BUSTEDS.json")
-    
     shell:
         "hyphy BUSTED --alignment {input.input_msa} --tree {input.input_tree_clade} --output {output.output} --branches {LABEL} --starting-points 10"
 #end rule -- busted
@@ -349,10 +343,9 @@ rule busted:
 rule relax:
     input:
         input_msa = rules.combine.output.output,
-        input_tree_clade = rules.annotate.output.input_clade_tree
+        input_tree_clade = rules.annotate.output.output_clade_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.RELAX.json")
-    
     shell:
         "hyphy RELAX --alignment {input.input_msa} --models Minimal --tree {input.input_tree_clade} --output {output.output} --test {LABEL} --reference Reference --starting-points 10 --srv Yes"
 #end rule -- relax
@@ -360,10 +353,9 @@ rule relax:
 rule prime:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.PRIME.json")
-    
     shell:
         "hyphy  PRIME --alignment {input.input_msa} --tree {input.input_tree} --output {output.output} --branches {LABEL}"
 #end rule -- prime
@@ -371,10 +363,9 @@ rule prime:
 rule meme_full:
     input:
         input_msa = rules.combine.output.output,
-        input_tree_full = rules.annotate.output.input_full_tree
+        input_tree_full = rules.annotate.output.output_full_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.MEME-full.json")
-    
     shell:
         "hyphy  MEME --alignment {input.input_msa} --tree {input.input_tree_full} --output {output.output} --branches {LABEL}"
 #end rule -- meme_full
@@ -382,10 +373,9 @@ rule meme_full:
 rule fade:
     input:
         input_msa = rules.convert_to_protein.output.proteinput_fas,
-        input_tree_clade = rules.annotate.output.input_clade_tree
+        input_tree_clade = rules.annotate.output.output_clade_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.FADE.json")
-    
     shell:
         "hyphy FADE --alignment {input.input_msa} --tree {input.input_tree_clade} --output {output.output} --branches {LABEL}"
 #end rule -- fade
@@ -394,10 +384,9 @@ rule fade:
 rule cfel:
     input:
         input_msa = rules.combine.output.output,
-        input_tree_clade = rules.annotate.output.input_clade_tree
+        input_tree_clade = rules.annotate.output.output_clade_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.CFEL.json")
-    
     shell:
         "hyphy contrast-fel --alignment {input.input_msa} --tree {input.input_tree_clade} --output {output.output} --branch-set {LABEL} --branch-set Reference"
 #end rule -- cfel
@@ -409,7 +398,7 @@ rule cfel:
 rule absrel:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.ABSREL.json")
     
@@ -420,10 +409,9 @@ rule absrel:
 rule absrels:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.ABSRELS.json")
-    
     shell:
         "hyphy ABSREL --alignment {input.input_msa} --tree {input.input_tree} --output {output.output} --branches {LABEL} --srv Yes"
 #end rule -- absrel
@@ -435,7 +423,7 @@ rule absrels:
 rule absrelmh:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.ABSREL-MH.json")
     shell:
@@ -445,7 +433,7 @@ rule absrelmh:
 rule absrelsmh:
     input:
         input_msa = rules.combine.output.output,
-        input_tree = rules.annotate.output.input_int_tree
+        input_tree = rules.annotate.output.output_int_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.ABSRELS-MH.json")
     shell:
@@ -455,7 +443,7 @@ rule absrelsmh:
 rule bustedmh:
     input:
         input_msa = rules.combine.output.output,
-        input_tree_clade = rules.annotate.output.input_clade_tree
+        input_tree_clade = rules.annotate.output.output_clade_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.BUSTEDS-MH.json")
     shell:
@@ -465,7 +453,7 @@ rule bustedmh:
 rule fmm:
     input:
         input_msa = rules.combine.output.output,
-        input_tree_clade = rules.annotate.output.input_clade_tree
+        input_tree_clade = rules.annotate.output.output_clade_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.FMM.json")
     shell:
@@ -476,7 +464,7 @@ rule fmm:
 rule relax_mh:
     input:
         input_msa = rules.combine.output.output,
-        input_tree_clade = rules.annotate.output.input_clade_tree
+        input_tree_clade = rules.annotate.output.output_clade_tree
     output:
         output = os.path.join(OUTDIR, "{GENE}.RELAX-MH.json")
     shell:

@@ -1,9 +1,10 @@
 {
   "Label":"Example1",
-  "Query_WholeGenomeSeqs":"gisaid_hcov-19_2022_04_13_14.fasta",
-  "Background_WholeGenomeSeqs:"",
+  "Query_WholeGenomeSeqs":"Example1/Query-Alpha-RandomDownsample-1000.fasta",
+  "Background_WholeGenomeSeqs": "Example1/Background-preAlpha-RandomDownsample-1000.fasta",
   "max_ref":"200",
   "max_query":"500",
   "threshold_query":"0.0005",
   "threshold_ref":"0.001"
+  
 }

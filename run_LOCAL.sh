@@ -23,7 +23,6 @@ echo "Executing HPC Snakemake command"
 snakemake \
       -s Snakefile \
       --cluster-config cluster.json \
-      --cluster "qsub -V -l nodes={cluster.nodes}:ppn={cluster.ppn} -q {cluster.name} -l walltime=120:00:00 -e logs -o logs" \
       --jobs 23 all \
       --rerun-incomplete \
       --keep-going \

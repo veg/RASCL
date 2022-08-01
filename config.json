@@ -1,7 +1,7 @@
 {
   "Label":"Example1",
-  "Query_WholeGenomeSeqs":"Example1/Query-Alpha-RandomDownsample-1000.fasta",
-  "Background_WholeGenomeSeqs": "Example1/Background-preAlpha-RandomDownsample-1000.fasta",
+  "Query_WholeGenomeSeqs":"Example1/Query-Alpha.fasta",
+  "Background_WholeGenomeSeqs": "Example1/Background-preAlpha.fasta",
   "max_ref":"200",
   "max_query":"500",
   "threshold_query":"0.0005",

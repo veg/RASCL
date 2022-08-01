@@ -62,6 +62,7 @@ genes = ["leader", "nsp2", "nsp3", "nsp4", "3C", "nsp6", "nsp7", "nsp8", \
 
 # Basename of INPUT_WG (used in rule clean)
 Input_Query_WholeGenomeSeqs_Basename = os.path.basename(Input_Query_WholeGenomeSeqs)
+Input_Background_WholeGenomeSeqs_Basename = os.path.basename(Input_Background_WholeGenomeSeqs)
 
 # Reference NCBI sequence dirs 
 # This is hard-coded to the Wuhan reference from NCBI.
@@ -82,8 +83,8 @@ PPN = cluster["__default__"]["ppn"]
 #==============================================================================
 rule all:
     input:
-        os.path.join(OUTDIR, Input_Query_WholeGenomeSeqs + ".fa"),
-        os.path.join(OUTDIR, Input_Background_WholeGenomeSeqs + ".fa"),
+        os.path.join(OUTDIR, Input_Query_WholeGenomeSeqs_Basename + ".fa"),
+        os.path.join(OUTDIR, Input_Background_WholeGenomeSeqs_Basename + ".fa"),
         expand(os.path.join(OUTDIR, "{GENE}.query.bam"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.OG"), GENE=genes),
         expand(os.path.join(OUTDIR, "{GENE}.query.msa.SA"), GENE=genes),
@@ -128,7 +129,7 @@ rule cleaner_query:
     input:
         input = Input_Query_WholeGenomeSeqs
     output:
-        output = os.path.join(OUTDIR, Input_Query_WholeGenomeSeqs + ".fa")
+        output = os.path.join(OUTDIR, Input_Query_WholeGenomeSeqs_Basename + ".fa")
     shell:
        "bash scripts/cleaner.sh {input.input} {output.output}"
 #end rule
@@ -137,7 +138,7 @@ rule cleaner_background:
     input:
         input = Input_Background_WholeGenomeSeqs
     output:
-        output = os.path.join(OUTDIR, Input_Background_WholeGenomeSeqs + ".fa")
+        output = os.path.join(OUTDIR, Input_Background_WholeGenomeSeqs_Basename + ".fa")
     shell:
        "bash scripts/cleaner.sh {input.input} {output.output}"
 #end rule

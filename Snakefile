@@ -220,8 +220,8 @@ rule strike_ambigs_ref:
 
 rule tn93_cluster_ref:
     params:
-        THRESHOLD_REF = config["threshold_ref"],
-        MAX_REF = config["max_ref"],
+        THRESHOLD_REF = config["threshold_background"],
+        MAX_REF = config["max_background"],
     input:
         input_msa = rules.strike_ambigs_ref.output.output_strike_ambigs,
         input_gene_ref_seq = os.path.join(REF_SEQ_DIR, "{GENE}.fas")

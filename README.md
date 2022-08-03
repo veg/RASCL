@@ -53,7 +53,7 @@ The results of the analysis will be placed into the `results/LABEL` directory as
 
 At the completion of the pipeline, the JSON outputs (Summary.json and Annotation.json) will be generated. These can be ingested into our full feature [Observable Notebook](https://observablehq.com/@aglucaci/rascl_latest). We suggest that users make a free account on ObservableHQ and fork this notebook, which allows the user to point the notebook to their data.
 
-The version of the notebook at [https://observablehq.com/@aglucaci/rascl_upload](https://observablehq.com/@aglucaci/rascl_upload) allows one to upload `summary` and `annotation` JSON files.
+The version of the notebook at https://observablehq.com/@spond/sars-cov-2-clades allows one to upload summary and annotation JSON files.
 
 #### Exploring results with our interactive notebook
 

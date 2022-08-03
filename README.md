@@ -19,7 +19,7 @@ There is an assumption that the freely available [Anaconda](https://anaconda.org
 
 The user input data (which consists of the clade of interest downloaded as a FASTA file of viral whole genome's) should be stored in the `./data}` subdirectory. We provide demo data for an test-run using the sequences in `data/Example`. These correspond to a set of "background" pre-Alpha variant set of sequences `data/Example/Background-preAlpha.fasta` and a "query" set of sequences corresponding to Alpha variant sequences `data/Example/Query-Alpha.fasta`
 
-The LABEL variable corresponds to your viral clade of interest (e.g. "B.1.1.7") and will be used for annotation. 
+The Label variable corresponds to your viral clade of interest (e.g. "B.1.1.7") and will be used for annotation. 
 
 1. Place your viral clade of interest fasta file within the "data" directory.
 2. In the `config.json` change the following:
@@ -27,9 +27,9 @@ The LABEL variable corresponds to your viral clade of interest (e.g. "B.1.1.7") 
        The `Background_WholeGenomeSeqs` variable to correspond to your query whole genome sequences (e.g. "Example1/Background-preAlpha.fasta")
        The `Query_WholeGenomeSeqs` variable to correspond to your query whole genome sequences (e.g. "Example1/Query-Alpha.fasta")
   
-3. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue.
+3. `cluster.json` can be modified for your HPC environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue. The `cluster` variable refers to the workload manager. The `nodes` variable is a request for resource allocation from the server, in this case it refers to the number of nodes. The `ppn` variable is a request for resource allocation from the server, in this case it refers to the number of processors per node. The `name` variable is a specification to submit the jobs for the RASCL application to a specific queue. These have different names and priorities, please refer to your local system administrator for more information. We have added an additional variable `walltime` which is a request for a certain period of time for resource allocation from the server.
 
-The results of running this application will be placed in the `./results/{LABEL}` subdirectory. This will contain a new folder with the name of of your clade i.e. the `"LABEL"` variable from the `config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.
+The results of running this application will be placed in the `./results/{Label}` subdirectory. This will contain a new folder with the name of of your clade i.e. the `"Label"` variable from the `config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.
 
 At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, RELAX, and Contrast-FEL, etc) will be aggregated into two JSON files (Summary.json and Annotation.json) for an Observable notebook to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on viral genes within the clade of interest.
 
@@ -41,13 +41,13 @@ The `config.json` file also contains a number of advanced features corresponding
 
 We provide an example HPC bash script to run the analysis in `run_Silverback.sh` which is designed to run on the Temple University computing cluster. This file can be modified to run in your own computing environment. In the `cluster.json` specify the name of the queue on your system, along with the computing resources to be used.
 
-Note, that in some cases not all of the pipeline steps will complete (e.g. insufficient sequences to run analyses on all gene segments). In this case please run, from the top RASCL directory, (with the value of `LABEL` from `config.json`, and `BASEDIR` corresponding to the main directory of your analysis.
+Note, that in some cases not all of the pipeline steps will complete (e.g. insufficient sequences to run analyses on all gene segments). In this case please run, from the top RASCL directory, (with the value of `Label` from `config.json`, and `BASEDIR` corresponding to the main directory of your analysis.
 
 ```
-bash scripts/process_json.sh {BASEDIR} {LABEL}
+bash scripts/process_json.sh {BASEDIR} {Label}
 ```
 
-The results of the analysis will be placed into the `results/LABEL` directory as `LABEL_summary.json` and `LABEL_annotation.json`.
+The results of the analysis will be placed into the `results/Label` directory as `Label_summary.json` and `Label_annotation.json`.
 
 ### Visualization
 

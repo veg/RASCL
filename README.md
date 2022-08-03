@@ -61,3 +61,11 @@ We provide visualizations, an alignment viewer, site-level phylogenetic trees, a
 
 ![](https://i.imgur.com/Da3p3x0.gif)
 
+### Galaxy workflow
+
+We also provide an alternative way to use RASCL within the [Galaxy](https://galaxy.hyphy.org) ecosystem. User accounts are free to sign up.
+
+[https://galaxy.hyphy.org/u/hyphy/w/rapid-assessment-of-selection-on-clades-and-lineages](https://galaxy.hyphy.org/u/hyphy/w/rapid-assessment-of-selection-on-clades-and-lineages).
+
+ 
+

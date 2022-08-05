@@ -3,9 +3,6 @@
 FASTA=$1
 OUTPUT=$2
 
-mkdir -p results
-mkdir -p results/Example1
-
 echo "# Input FASTA: "$FASTA
 echo "# Output FASTA: "$OUTPUT
 

@@ -65,6 +65,7 @@ At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, 
   - requires version `1.0.9`
 10. `git clone https://github.com/veg/hyphy.git` (follow developer install directions)
   - requies version `2.5.41`
+11. `brew install gnu-sed`
 
 Note: add the `raxml_ng` variable, which corresponds to the full path to the `raxml-ng` executable that was installed, it should look something like: `/usr/path/to/raxml-ng/bin/raxml-ng` to your `config.json` for local runs.
 

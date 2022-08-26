@@ -1,0 +1,2561 @@
+{
+ "E": {
+  "map": [],
+  "rates": {
+   "mean-omega": {
+    "Example1": 0.3036731030347117,
+    "Reference": 3.130710577257165
+   },
+   "T": {
+    "Example1": 0.08609971400517032,
+    "Reference": 0.03598805806432195
+   },
+   "relax": {
+    "Example1": [
+     {
+      "omega": 0.2838843611883163,
+      "proportion": 0.7944707580596084
+     },
+     {
+      "omega": 0.3950823189222373,
+      "proportion": 0.2055292419403916
+     },
+     {
+      "omega": 1.030065116293035,
+      "proportion": 0
+     }
+    ],
+    "Reference": [
+     {
+      "omega": 0.2838843611883163,
+      "proportion": 0.7944707580596084
+     },
+     {
+      "omega": 0.3950823189222373,
+      "proportion": 0.2055292419403916
+     },
+     {
+      "omega": 1.030065116293035,
+      "proportion": 0
+     }
+    ]
+   },
+   "busted": {
+    "Background": {
+     "0": {
+      "omega": 0.9956318646357445,
+      "proportion": 0
+     },
+     "1": {
+      "omega": 0.9993683385761363,
+      "proportion": 0
+     },
+     "2": {
+      "omega": 3.240408490890451,
+      "proportion": 1
+     }
+    },
+    "Synonymous site-to-site rates": {
+     "0": {
+      "proportion": 0,
+      "rate": 0.7331369566520425
+     },
+     "1": {
+      "proportion": 1,
+      "rate": 1
+     },
+     "2": {
+      "proportion": 0,
+      "rate": 8.581189220418334
+     }
+    },
+    "Test": {
+     "0": {
+      "omega": 0.00161723932077783,
+      "proportion": 0.227070996370406
+     },
+     "1": {
+      "omega": 0.04260572784997999,
+      "proportion": 0.4866985605103956
+     },
+     "2": {
+      "omega": 1,
+      "proportion": 0.2862304431191984
+     }
+    }
+   }
+  },
+  "relax": {
+   "p": 0.04569723961384831,
+   "K": 18.97616297253203
+  },
+  "busted": {
+   "p": 0.5
+  },
+  "tree": "(REFERENCE,gb_MZ432563_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_MMB08928612_2021_Segment_null_Host_Human,gb_OA975485_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA975485_Segment_null_Host_Human,gb_MT614497_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_QDX_56_2020_Segment_null_Host_Human,gb_OV912308_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV912308_Segment_null_Host_Human,gb_OV064953_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_76_Segment_null_Host_Human,gb_OA996706_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA996706_Segment_null_Host_Human,gb_OA980697_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA980697_Segment_null_Host_Human,gb_LR883308_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Netherlands_NA_424_2020_Segment_null_Host_Human,gb_OA995173_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995173_Segment_null_Host_Human,gb_MZ184434_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MO_CDC_ASC210035500_2021_Segment_null_Host_Human,gb_MT322421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0043_2020_Segment_null_Host_Human,gb_ON298518_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_013935_Nova1_2020_Segment_null_Host_Human,gb_MT873873_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_03836_2020_Segment_null_Host_Human,gb_ON278792_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_035609_Nova1_2020_Segment_null_Host_Human,gb_MW154802_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC6742_2020_Segment_null_Host_Human,gb_OM245208_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDPH_3000033447_2021_Segment_null_Host_Human,gb_OU192129_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU192129_Segment_null_Host_Human,gb_OD898626_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD898626_Segment_null_Host_Human,gb_OK462941_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG1007867_2020_Segment_null_Host_Human,gb_OA984275_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984275_Segment_null_Host_Human,gb_OU273476_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU273476_Segment_null_Host_Human,gb_OB982422_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB982422_Segment_null_Host_Human,gb_MT947159_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_EGY_EGY_S037_2020_Segment_null_Host_Human,gb_OA967179_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA967179_Segment_null_Host_Human,gb_MZ504024_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_1357_2020_Segment_null_Host_Human,gb_MW907774_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_IN_CDC_STM_000034563_2021_Segment_null_Host_Human,gb_OU225903_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU225903_Segment_null_Host_Human,gb_ON601367_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NMINBRE_ILLUMINA_WGS__204285_2020_Segment_null_Host_Human,gb_OA972790_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA972790_Segment_null_Host_Human)",
+  "tree_tags": {
+   "REFERENCE": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_MZ432563_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_MMB08928612_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004346886631061204,
+    [],
+    []
+   ],
+   "gb_OA975485_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA975485_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004361548405094267,
+    [],
+    []
+   ],
+   "gb_MT614497_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_QDX_56_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004346886631076483,
+    [],
+    []
+   ],
+   "gb_OV912308_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV912308_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004356283147913327,
+    [],
+    []
+   ],
+   "gb_OV064953_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_76_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004356283147914001,
+    [],
+    []
+   ],
+   "gb_OA996706_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA996706_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004349914420921961,
+    [],
+    []
+   ],
+   "gb_OA980697_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA980697_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004346886616046535,
+    [],
+    []
+   ],
+   "gb_LR883308_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Netherlands_NA_424_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004414062876911511,
+    [],
+    []
+   ],
+   "gb_OA995173_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995173_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004346886631072445,
+    [],
+    []
+   ],
+   "gb_MZ184434_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MO_CDC_ASC210035500_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004356283147876706,
+    [],
+    []
+   ],
+   "gb_MT322421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0043_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_ON298518_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_013935_Nova1_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004356283147876045,
+    [],
+    []
+   ],
+   "gb_MT873873_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_03836_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004356283147876045,
+    [],
+    []
+   ],
+   "gb_ON278792_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_035609_Nova1_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004346886631020439,
+    [],
+    []
+   ],
+   "gb_MW154802_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC6742_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004356283147913325,
+    [],
+    []
+   ],
+   "gb_OM245208_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDPH_3000033447_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004361548405125834,
+    [],
+    []
+   ],
+   "gb_OU192129_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU192129_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004359318573850828,
+    [],
+    []
+   ],
+   "gb_OD898626_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD898626_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004361548405087031,
+    [],
+    []
+   ],
+   "gb_OK462941_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG1007867_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004356283147913323,
+    [],
+    []
+   ],
+   "gb_OA984275_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984275_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004361548405001543,
+    [],
+    []
+   ],
+   "gb_OU273476_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU273476_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004346886631015728,
+    [],
+    []
+   ],
+   "gb_OB982422_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB982422_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00434990034781003,
+    [],
+    []
+   ],
+   "gb_MT947159_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_EGY_EGY_S037_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004361506407837202,
+    [],
+    []
+   ],
+   "gb_OA967179_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA967179_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004346886631071771,
+    [],
+    []
+   ],
+   "gb_MZ504024_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_1357_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004361548405087031,
+    [],
+    []
+   ],
+   "gb_MW907774_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_IN_CDC_STM_000034563_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004356259175338525,
+    [],
+    []
+   ],
+   "gb_OU225903_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU225903_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.004359328066698244,
+    [],
+    []
+   ],
+   "gb_ON601367_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NMINBRE_ILLUMINA_WGS__204285_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004356283147913327,
+    [],
+    []
+   ],
+   "gb_OA972790_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA972790_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004356283147913326,
+    [],
+    []
+   ]
+  },
+  "prime-properties": [
+   "The number of unique amino-acids occurring at that site",
+   "Omnibus p-value (any property is important)",
+   "Log likelihood when there is no effect of Factor I bipolar",
+   "Log likelihood when there is no effect of Factor II secondary structure",
+   "Log likelihood when there is no effect of Factor III volume",
+   "Log likelihood when there is no effect of Factor IV composition",
+   "Log likelihood when there is no effect of Factor V charge"
+  ],
+  "bgm": []
+ },
+ "3C": {
+  "map": [],
+  "rates": {
+   "mean-omega": {
+    "Example1": 0.3640070577660455,
+    "Reference": 0.3281256092046566
+   },
+   "T": {
+    "Example1": 0.08180986875626484,
+    "Reference": 0.06994317776275814
+   },
+   "relax": {
+    "Example1": [
+     {
+      "omega": 0.2362196457245323,
+      "proportion": 0.7929853995091414
+     },
+     {
+      "omega": 0.2769197644494303,
+      "proportion": 0.09452901292296617
+     },
+     {
+      "omega": 1.346783103225152,
+      "proportion": 0.1124855875678925
+     }
+    ],
+    "Reference": [
+     {
+      "omega": 0.2362196457245323,
+      "proportion": 0.7929853995091414
+     },
+     {
+      "omega": 0.2769197644494303,
+      "proportion": 0.09452901292296617
+     },
+     {
+      "omega": 1.346783103225152,
+      "proportion": 0.1124855875678925
+     }
+    ]
+   },
+   "busted": {
+    "Background": {
+     "0": {
+      "omega": 0,
+      "proportion": 0.8927872199835801
+     },
+     "1": {
+      "omega": 0,
+      "proportion": 0.09961336930656813
+     },
+     "2": {
+      "omega": 50.9958364631545,
+      "proportion": 0.007599410709851743
+     }
+    },
+    "Synonymous site-to-site rates": {
+     "0": {
+      "proportion": 0,
+      "rate": 0.9542911451938578
+     },
+     "1": {
+      "proportion": 1,
+      "rate": 1
+     },
+     "2": {
+      "proportion": 0,
+      "rate": 1.002123415548368
+     }
+    },
+    "Test": {
+     "0": {
+      "omega": 0.1836131268034932,
+      "proportion": 0
+     },
+     "1": {
+      "omega": 0.3554889321736067,
+      "proportion": 1
+     },
+     "2": {
+      "omega": 2.057288736207473,
+      "proportion": 0
+     }
+    }
+   }
+  },
+  "relax": {
+   "p": 0.5912407296435536,
+   "K": 0.7375520168600309
+  },
+  "busted": {
+   "p": 0.5
+  },
+  "tree": "(REFERENCE,gb_MT322421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0043_2020_Segment_null_Host_Human,(gb_MT499180_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_1205_2020_Segment_null_Host_Human,gb_FR996133_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR996133_Segment_null_Host_Human)Node36,gb_OU272062_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU272062_Segment_null_Host_Human,gb_OA979696_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA979696_Segment_null_Host_Human,gb_MZ321764_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_MMB08612499_2021_Segment_null_Host_Human,gb_OA976807_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA976807_Segment_null_Host_Human,gb_OU234560_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU234560_Segment_null_Host_Human,gb_MT704114_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_BPHL_0296_2020_Segment_null_Host_Human,gb_OA972092_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA972092_Segment_null_Host_Human,gb_OD924373_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD924373_Segment_null_Host_Human,gb_MT810766_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_MEX_SEARCH_1692_TIJ_2020_Segment_null_Host_Human,gb_MZ917396_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG920563_2020_Segment_null_Host_Human,(gb_OK548911_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_Mexico_SEARCH_102549_2020_Segment_null_Host_Human,gb_OB994344_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB994344_Segment_null_Host_Human,gb_OD933378_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD933378_Segment_null_Host_Human)Node55,gb_OU246746_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU246746_Segment_null_Host_Human,gb_FR995602_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR995602_Segment_null_Host_Human,gb_MT971079_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC5045_2020_Segment_null_Host_Human,gb_OD982282_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD982282_Segment_null_Host_Human,gb_OA984408_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984408_Segment_null_Host_Human,(gb_ON477917_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG340789_2020_Segment_null_Host_Human,gb_OU038496_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU038496_Segment_null_Host_Human)Node28,gb_OU014651_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU014651_Segment_null_Host_Human,(gb_MZ072922_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CT_CDC_LC0048878_2021_Segment_null_Host_Human,gb_OU182395_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Iceland_1535_2020_Segment_null_Host_Human,gb_MZ284095_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_CDC_ASC210030480_2021_Segment_null_Host_Human,gb_OK466489_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG974276_2020_Segment_null_Host_Human,gb_MW566531_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NC_QDX_4451_2020_Segment_null_Host_Human)Node251,gb_OU309068_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU309068_Segment_null_Host_Human,gb_MZ471999_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2105287576_2021_Segment_null_Host_Human,(gb_OA974068_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA974068_Segment_null_Host_Human,gb_OB987628_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB987628_Segment_null_Host_Human,gb_OA966775_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA966775_Segment_null_Host_Human)Node242,gb_MZ531615_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_CDC_LC0079807_2021_Segment_null_Host_Human,gb_OU324836_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU324836_Segment_null_Host_Human,gb_OB983293_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB983293_Segment_null_Host_Human,gb_MZ448861_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NYI_NA_20_213_2020_Segment_null_Host_Human,gb_FR996482_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR996482_Segment_null_Host_Human,gb_OB992791_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB992791_Segment_null_Host_Human,gb_OA995262_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995262_Segment_null_Host_Human,gb_OU105171_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU105171_Segment_null_Host_Human,gb_MZ180853_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_LC0055190_2021_Segment_null_Host_Human,gb_MT831547_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WA_S2624_2020_Segment_null_Host_Human,gb_MW539901_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MA_MASPHL_00666_2020_Segment_null_Host_Human,gb_OV833558_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV833558_Segment_null_Host_Human,gb_OU215468_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU215468_Segment_null_Host_Human,gb_OA969462_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA969462_Segment_null_Host_Human,gb_MW276632_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_11802_2020_Segment_null_Host_Human,gb_OU844888_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU844888_Segment_null_Host_Human,gb_OV019311_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV019311_Segment_null_Host_Human,gb_OV064953_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_76_Segment_null_Host_Human,gb_MZ154375_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_STM_000059952_2021_Segment_null_Host_Human,gb_OD911567_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD911567_Segment_null_Host_Human,gb_MT470147_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_France_10080AA_2020_Segment_null_Host_Human,gb_MZ414299_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_LACPHL_AE00181_2020_Segment_null_Host_Human,gb_OA989941_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA989941_Segment_null_Host_Human,gb_OU226005_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU226005_Segment_null_Host_Human,gb_MZ228171_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MA_CDC_STM_000065155_2021_Segment_null_Host_Human,gb_OU210325_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU210325_Segment_null_Host_Human,gb_MZ906451_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG670276_2020_Segment_null_Host_Human,gb_MW593911_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FHCRC_4775_2020_Segment_null_Host_Human,gb_MZ193963_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MN_CDC__IBX438468798787_2021_Segment_null_Host_Human,gb_OD913357_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD913357_Segment_null_Host_Human,gb_MW593368_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FHCRC_10172_2020_Segment_null_Host_Human,gb_MZ010029_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC__IBX222127246001_2020_Segment_null_Host_Human,(gb_OL816546_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MI_MDHHS_SC21362_2020_Segment_null_Host_Human,gb_OA996330_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA996330_Segment_null_Host_Human)Node109,gb_ON286241_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_010749_Illu1_2020_Segment_null_Host_Human,gb_OA995803_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995803_Segment_null_Host_Human,gb_OU248689_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU248689_Segment_null_Host_Human,gb_OU019355_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU019355_Segment_null_Host_Human,gb_OU234397_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU234397_Segment_null_Host_Human,gb_OW999197_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_B_1_1_7_Segment_null_Host_Human,gb_OU391751_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU391751_Segment_null_Host_Human,(gb_OA992475_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA992475_Segment_null_Host_Human,gb_OU186311_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU186311_Segment_null_Host_Human)Node127,gb_OA984289_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984289_Segment_null_Host_Human,gb_ON282686_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_015392__Nova1A_2020_Segment_null_Host_Human,(gb_OU258637_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU258637_Segment_null_Host_Human,gb_OA968302_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA968302_Segment_null_Host_Human)Node133,(gb_OU010477_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU010477_Segment_null_Host_Human,gb_OA979102_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA979102_Segment_null_Host_Human,gb_OU385015_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU385015_Segment_null_Host_Human)Node136,gb_MZ244930_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_ASC210061995_2021_Segment_null_Host_Human,gb_MT601276_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_BGD_BCSIR_NILMRC_52_2020_Segment_null_Host_Human,gb_OA970614_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA970614_Segment_null_Host_Human,gb_OU814196_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU814196_Segment_null_Host_Human,gb_OA992957_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA992957_Segment_null_Host_Human,gb_MT482146_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0166_2020_Segment_null_Host_Human,gb_OV526584_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV526584_Segment_null_Host_Human,gb_OA978478_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA978478_Segment_null_Host_Human,gb_OA984347_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984347_Segment_null_Host_Human,gb_FR996508_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR996508_Segment_null_Host_Human,((gb_OU298650_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU298650_Segment_null_Host_Human,gb_OU213090_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU213090_Segment_null_Host_Human)Node182,gb_MZ390615_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NM_CDC_QDX25088872_2021_Segment_null_Host_Human,gb_ON724443_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_1773978_2021_Segment_null_Host_Human,gb_MW807840_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_CDC_STM_000017316_2021_Segment_null_Host_Human,gb_MZ490305_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2105566725_2021_Segment_null_Host_Human,gb_OL522996_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_CDC_STM_000705171_2021_Segment_null_Host_Human,gb_MZ706239_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_ASC210112023_2021_Segment_null_Host_Human,(gb_MZ535946_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_QDX26257498_2021_Segment_null_Host_Human,gb_MZ075093_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_ASC210047453_2021_Segment_null_Host_Human)Node194)Node181,gb_MZ906816_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG547246_2020_Segment_null_Host_Human,gb_OU202470_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU202470_Segment_null_Host_Human,gb_OA998626_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA998626_Segment_null_Host_Human,gb_OA972985_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA972985_Segment_null_Host_Human,gb_OK296730_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_PA_CDC_ASC210009419_2021_Segment_null_Host_Human,gb_OD992260_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_BS_42386285_2020_Segment_null_Host_Human,(gb_MW035959_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_2224_2020_Segment_null_Host_Human,gb_OD992229_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_BS_42342623_2020_Segment_null_Host_Human)Node177,(gb_OA995571_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995571_Segment_null_Host_Human,gb_OU195451_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU195451_Segment_null_Host_Human)Node173,gb_OU257177_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU257177_Segment_null_Host_Human,gb_MW869104_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC_STM_000031765_2021_Segment_null_Host_Human,(gb_OM316187_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_42336_2020_Segment_null_Host_Human,gb_MW332766_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WI_UW_1647_2020_Segment_null_Host_Human,gb_OA971338_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA971338_Segment_null_Host_Human,gb_MW192107_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MN_MDH_1865_2020_Segment_null_Host_Human,gb_OL676109_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV__2_human_USA_hCov_19_USA_ID_IVREF_666335_2020_2020_Segment_null_Host_Human,gb_MW923954_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_JEBM_2020_Segment_null_Host_Human)Node202,gb_OB986140_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB986140_Segment_null_Host_Human,gb_OU288769_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU288769_Segment_null_Host_Human,gb_OU475984_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_RNA_Segment_null_Host_Human,(gb_OU024385_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU024385_Segment_null_Host_Human,gb_MZ085582_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_ASC210050769_2021_Segment_null_Host_Human,gb_OU813009_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU813009_Segment_null_Host_Human)Node224,gb_OD910458_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD910458_Segment_null_Host_Human,gb_MZ373654_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2104527764_2020_Segment_null_Host_Human)",
+  "tree_tags": {
+   "REFERENCE": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_MT322421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0043_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_MT499180_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_1205_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_FR996133_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR996133_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001109516985557811,
+    [],
+    []
+   ],
+   "Node36": [
+    "Example1",
+    true,
+    0.001110281099705975,
+    [],
+    []
+   ],
+   "gb_OU272062_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU272062_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109416624422219,
+    [],
+    []
+   ],
+   "gb_OA979696_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA979696_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001109238400413521,
+    [],
+    []
+   ],
+   "gb_MZ321764_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_MMB08612499_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.003354704861565928,
+    [],
+    []
+   ],
+   "gb_OA976807_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA976807_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001109419028130628,
+    [],
+    []
+   ],
+   "gb_OU234560_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU234560_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110524252435555,
+    [],
+    []
+   ],
+   "gb_MT704114_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_BPHL_0296_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524375963327,
+    [],
+    []
+   ],
+   "gb_OA972092_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA972092_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110182861401624,
+    [],
+    []
+   ],
+   "gb_OD924373_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD924373_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109898013316861,
+    [],
+    []
+   ],
+   "gb_MT810766_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_MEX_SEARCH_1692_TIJ_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524375742616,
+    [],
+    []
+   ],
+   "gb_MZ917396_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG920563_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001109419543865947,
+    [],
+    []
+   ],
+   "gb_OK548911_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_Mexico_SEARCH_102549_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001163992325056814,
+    [],
+    []
+   ],
+   "gb_OB994344_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB994344_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OD933378_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD933378_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110545197997108,
+    [],
+    []
+   ],
+   "Node55": [
+    "",
+    true,
+    0.00111100285144154,
+    [],
+    []
+   ],
+   "gb_OU246746_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU246746_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110563485329212,
+    [],
+    []
+   ],
+   "gb_FR995602_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR995602_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110184617520254,
+    [],
+    []
+   ],
+   "gb_MT971079_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC5045_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110230867617786,
+    [],
+    []
+   ],
+   "gb_OD982282_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD982282_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001115599486229272,
+    [],
+    []
+   ],
+   "gb_OA984408_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984408_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524755337637,
+    [],
+    []
+   ],
+   "gb_ON477917_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG340789_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OU038496_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU038496_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001111630363459408,
+    [],
+    []
+   ],
+   "Node28": [
+    "",
+    true,
+    0.001111023445867999,
+    [],
+    []
+   ],
+   "gb_OU014651_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU014651_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110606057946041,
+    [],
+    []
+   ],
+   "gb_MZ072922_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CT_CDC_LC0048878_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110191000310474,
+    [],
+    []
+   ],
+   "gb_OU182395_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Iceland_1535_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_MZ284095_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_CDC_ASC210030480_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001108891841797064,
+    [],
+    []
+   ],
+   "gb_OK466489_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG974276_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110198097465112,
+    [],
+    []
+   ],
+   "gb_MW566531_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NC_QDX_4451_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110222064019081,
+    [],
+    []
+   ],
+   "Node251": [
+    "",
+    true,
+    0.001110632177563829,
+    [],
+    []
+   ],
+   "gb_OU309068_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU309068_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110184799993664,
+    [],
+    []
+   ],
+   "gb_MZ471999_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2105287576_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110526288706393,
+    [],
+    []
+   ],
+   "gb_OA974068_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA974068_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OB987628_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB987628_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001111118030491144,
+    [],
+    []
+   ],
+   "gb_OA966775_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA966775_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001304303736496158,
+    [],
+    []
+   ],
+   "Node242": [
+    "Example1",
+    true,
+    0.00111056876880106,
+    [],
+    []
+   ],
+   "gb_MZ531615_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_CDC_LC0079807_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110752700277066,
+    [],
+    []
+   ],
+   "gb_OU324836_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU324836_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109799828534842,
+    [],
+    []
+   ],
+   "gb_OB983293_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB983293_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110752700095588,
+    [],
+    []
+   ],
+   "gb_MZ448861_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NYI_NA_20_213_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110950902230162,
+    [],
+    []
+   ],
+   "gb_FR996482_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR996482_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524375963339,
+    [],
+    []
+   ],
+   "gb_OB992791_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB992791_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524354552001,
+    [],
+    []
+   ],
+   "gb_OA995262_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995262_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00111027498436886,
+    [],
+    []
+   ],
+   "gb_OU105171_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU105171_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110942849809788,
+    [],
+    []
+   ],
+   "gb_MZ180853_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_LC0055190_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110446438922725,
+    [],
+    []
+   ],
+   "gb_MT831547_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WA_S2624_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001111155070525517,
+    [],
+    []
+   ],
+   "gb_MW539901_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MA_MASPHL_00666_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110772685449713,
+    [],
+    []
+   ],
+   "gb_OV833558_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV833558_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110526528927547,
+    [],
+    []
+   ],
+   "gb_OU215468_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU215468_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110185085630725,
+    [],
+    []
+   ],
+   "gb_OA969462_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA969462_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001111251699034903,
+    [],
+    []
+   ],
+   "gb_MW276632_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_11802_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110752695616719,
+    [],
+    []
+   ],
+   "gb_OU844888_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU844888_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110227865092742,
+    [],
+    []
+   ],
+   "gb_OV019311_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV019311_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001109419561014774,
+    [],
+    []
+   ],
+   "gb_OV064953_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_76_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524375963356,
+    [],
+    []
+   ],
+   "gb_MZ154375_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_STM_000059952_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110167340936094,
+    [],
+    []
+   ],
+   "gb_OD911567_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD911567_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.00111095084287358,
+    [],
+    []
+   ],
+   "gb_MT470147_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_France_10080AA_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110752721292377,
+    [],
+    []
+   ],
+   "gb_MZ414299_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_LACPHL_AE00181_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00110984102572687,
+    [],
+    []
+   ],
+   "gb_OA989941_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA989941_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110563764035385,
+    [],
+    []
+   ],
+   "gb_OU226005_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU226005_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109448219460252,
+    [],
+    []
+   ],
+   "gb_MZ228171_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MA_CDC_STM_000065155_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110263906343924,
+    [],
+    []
+   ],
+   "gb_OU210325_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU210325_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109235835740217,
+    [],
+    []
+   ],
+   "gb_MZ906451_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG670276_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00111095090224256,
+    [],
+    []
+   ],
+   "gb_MW593911_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FHCRC_4775_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110432084088776,
+    [],
+    []
+   ],
+   "gb_MZ193963_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MN_CDC__IBX438468798787_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109823704091742,
+    [],
+    []
+   ],
+   "gb_OD913357_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD913357_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109419419822097,
+    [],
+    []
+   ],
+   "gb_MW593368_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FHCRC_10172_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001109896534723137,
+    [],
+    []
+   ],
+   "gb_MZ010029_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC__IBX222127246001_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110548733307369,
+    [],
+    []
+   ],
+   "gb_OL816546_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MI_MDHHS_SC21362_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001111668091946607,
+    [],
+    []
+   ],
+   "gb_OA996330_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA996330_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node109": [
+    "Example1",
+    true,
+    0.001110953970353719,
+    [],
+    []
+   ],
+   "gb_ON286241_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_010749_Illu1_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00111161344164304,
+    [],
+    []
+   ],
+   "gb_OA995803_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995803_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110742771150039,
+    [],
+    []
+   ],
+   "gb_OU248689_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU248689_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110752693144763,
+    [],
+    []
+   ],
+   "gb_OU019355_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU019355_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110950903226106,
+    [],
+    []
+   ],
+   "gb_OU234397_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU234397_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109841025734549,
+    [],
+    []
+   ],
+   "gb_OW999197_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_B_1_1_7_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110563746321334,
+    [],
+    []
+   ],
+   "gb_OU391751_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU391751_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110543429944967,
+    [],
+    []
+   ],
+   "gb_OA992475_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA992475_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OU186311_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU186311_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001111668490131877,
+    [],
+    []
+   ],
+   "Node127": [
+    "",
+    true,
+    0.001111324847965552,
+    [],
+    []
+   ],
+   "gb_OA984289_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984289_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00111053086538394,
+    [],
+    []
+   ],
+   "gb_ON282686_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_015392__Nova1A_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110542061492466,
+    [],
+    []
+   ],
+   "gb_OU258637_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU258637_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OA968302_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA968302_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.004469213678384666,
+    [],
+    []
+   ],
+   "Node133": [
+    "",
+    true,
+    0.001111656460602048,
+    [],
+    []
+   ],
+   "gb_OU010477_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU010477_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.00148919548695933,
+    [],
+    []
+   ],
+   "gb_OA979102_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA979102_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001311403975357256,
+    [],
+    []
+   ],
+   "gb_OU385015_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU385015_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node136": [
+    "",
+    true,
+    0.001109764777026867,
+    [],
+    []
+   ],
+   "gb_MZ244930_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_ASC210061995_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110563972082616,
+    [],
+    []
+   ],
+   "gb_MT601276_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_BGD_BCSIR_NILMRC_52_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110545121066697,
+    [],
+    []
+   ],
+   "gb_OA970614_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA970614_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110950902242005,
+    [],
+    []
+   ],
+   "gb_OU814196_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU814196_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110752695615737,
+    [],
+    []
+   ],
+   "gb_OA992957_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA992957_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110161697649587,
+    [],
+    []
+   ],
+   "gb_MT482146_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0166_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110434128975948,
+    [],
+    []
+   ],
+   "gb_OV526584_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV526584_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.00110989611951193,
+    [],
+    []
+   ],
+   "gb_OA978478_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA978478_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110373636384375,
+    [],
+    []
+   ],
+   "gb_OA984347_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA984347_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001118649006106545,
+    [],
+    []
+   ],
+   "gb_FR996508_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR996508_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110372973001533,
+    [],
+    []
+   ],
+   "gb_OU298650_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU298650_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001108973784205536,
+    [],
+    []
+   ],
+   "gb_OU213090_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU213090_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node182": [
+    "Reference",
+    true,
+    0.002222655884639704,
+    [],
+    []
+   ],
+   "gb_MZ390615_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NM_CDC_QDX25088872_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110432452219459,
+    [],
+    []
+   ],
+   "gb_ON724443_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_1773978_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110815258563049,
+    [],
+    []
+   ],
+   "gb_MW807840_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_CDC_STM_000017316_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.002224938835776464,
+    [],
+    []
+   ],
+   "gb_MZ490305_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2105566725_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OL522996_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_CDC_STM_000705171_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110198630026343,
+    [],
+    []
+   ],
+   "gb_MZ706239_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_ASC210112023_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110813332773449,
+    [],
+    []
+   ],
+   "gb_MZ535946_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_QDX26257498_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_MZ075093_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_ASC210047453_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110584771205658,
+    [],
+    []
+   ],
+   "Node194": [
+    "Reference",
+    true,
+    0.001110587342642854,
+    [],
+    []
+   ],
+   "Node181": [
+    "Reference",
+    true,
+    0.001109852067332371,
+    [],
+    []
+   ],
+   "gb_MZ906816_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG547246_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524375963373,
+    [],
+    []
+   ],
+   "gb_OU202470_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU202470_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.00111052437596356,
+    [],
+    []
+   ],
+   "gb_OA998626_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA998626_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110182151343407,
+    [],
+    []
+   ],
+   "gb_OA972985_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA972985_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00111095090235712,
+    [],
+    []
+   ],
+   "gb_OK296730_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_PA_CDC_ASC210009419_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110752700082119,
+    [],
+    []
+   ],
+   "gb_OD992260_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_BS_42386285_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110251592361719,
+    [],
+    []
+   ],
+   "gb_MW035959_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_2224_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OD992229_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_BS_42342623_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node177": [
+    "Example1",
+    true,
+    0.001109835932227425,
+    [],
+    []
+   ],
+   "gb_OA995571_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995571_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OU195451_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU195451_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001492426284414992,
+    [],
+    []
+   ],
+   "Node173": [
+    "",
+    true,
+    0.001111026058889765,
+    [],
+    []
+   ],
+   "gb_OU257177_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU257177_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110192677430901,
+    [],
+    []
+   ],
+   "gb_MW869104_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC_STM_000031765_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110541053673024,
+    [],
+    []
+   ],
+   "gb_OM316187_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_42336_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110924031223278,
+    [],
+    []
+   ],
+   "gb_MW332766_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WI_UW_1647_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.0011116938800415,
+    [],
+    []
+   ],
+   "gb_OA971338_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA971338_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110563713797963,
+    [],
+    []
+   ],
+   "gb_MW192107_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MN_MDH_1865_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OL676109_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV__2_human_USA_hCov_19_USA_ID_IVREF_666335_2020_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001111671593894712,
+    [],
+    []
+   ],
+   "gb_MW923954_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_JEBM_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001111668610234076,
+    [],
+    []
+   ],
+   "Node202": [
+    "Example1",
+    true,
+    0.001110951895135297,
+    [],
+    []
+   ],
+   "gb_OB986140_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB986140_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524375963525,
+    [],
+    []
+   ],
+   "gb_OU288769_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU288769_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110524354552188,
+    [],
+    []
+   ],
+   "gb_OU475984_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_RNA_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001109721094461596,
+    [],
+    []
+   ],
+   "gb_OU024385_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU024385_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001110559910691926,
+    [],
+    []
+   ],
+   "gb_MZ085582_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_ASC210050769_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001111025241888531,
+    [],
+    []
+   ],
+   "gb_OU813009_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU813009_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node224": [
+    "Reference",
+    true,
+    0.001110950790689706,
+    [],
+    []
+   ],
+   "gb_OD910458_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD910458_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.00111052437596349,
+    [],
+    []
+   ],
+   "gb_MZ373654_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2104527764_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001110524376004539,
+    [],
+    []
+   ]
+  },
+  "prime-properties": [
+   "The number of unique amino-acids occurring at that site",
+   "Omnibus p-value (any property is important)",
+   "Log likelihood when there is no effect of Factor I bipolar",
+   "Log likelihood when there is no effect of Factor II secondary structure",
+   "Log likelihood when there is no effect of Factor III volume",
+   "Log likelihood when there is no effect of Factor IV composition",
+   "Log likelihood when there is no effect of Factor V charge"
+  ],
+  "bgm": []
+ },
+ "M": {
+  "map": [],
+  "rates": {
+   "mean-omega": {
+    "Example1": 0.3084508848625333,
+    "Reference": 0.3862562098764555
+   },
+   "T": {
+    "Example1": 0.09668799626543052,
+    "Reference": 0.07856713244793574
+   },
+   "relax": {
+    "Example1": [
+     {
+      "omega": 0.1131072413762696,
+      "proportion": 0.310749299768199
+     },
+     {
+      "omega": 0.2063962632459544,
+      "proportion": 0.5212524019756216
+     },
+     {
+      "omega": 1,
+      "proportion": 0.1679982982561794
+     }
+    ],
+    "Reference": [
+     {
+      "omega": 0.1131072413762696,
+      "proportion": 0.310749299768199
+     },
+     {
+      "omega": 0.2063962632459544,
+      "proportion": 0.5212524019756216
+     },
+     {
+      "omega": 1,
+      "proportion": 0.1679982982561794
+     }
+    ]
+   },
+   "busted": {
+    "Background": {
+     "0": {
+      "omega": 0.3870245387641748,
+      "proportion": 1
+     },
+     "1": {
+      "omega": 0.4707381007320756,
+      "proportion": 0
+     },
+     "2": {
+      "omega": 12.50318986669278,
+      "proportion": 0
+     }
+    },
+    "Synonymous site-to-site rates": {
+     "0": {
+      "proportion": 0.1366258498984554,
+      "rate": 0
+     },
+     "1": {
+      "proportion": 0.8628995984849015,
+      "rate": 0.9767083992495276
+     },
+     "2": {
+      "proportion": 0.0004745516166431218,
+      "rate": 331.2573573402667
+     }
+    },
+    "Test": {
+     "0": {
+      "omega": 0.1300062608784903,
+      "proportion": 0.7877294855174102
+     },
+     "1": {
+      "omega": 0.9762073876183067,
+      "proportion": 0.2122705144825898
+     },
+     "2": {
+      "omega": 1.250324546779407,
+      "proportion": 0
+     }
+    }
+   }
+  },
+  "relax": {
+   "p": 0.5625389467992657,
+   "K": 1.32755760002257
+  },
+  "busted": {
+   "p": 0.5
+  },
+  "tree": "(REFERENCE,gb_MW738818_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_DSHS_3243_2020_Segment_null_Host_Human,(gb_MW932521_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_PA_CDC_STM_000046281_2021_Segment_null_Host_Human,gb_MZ075487_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_ASC210048203_2021_Segment_null_Host_Human)Node202,(gb_OB984669_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB984669_Segment_null_Host_Human,gb_OB987670_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB987670_Segment_null_Host_Human,gb_OB982473_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB982473_Segment_null_Host_Human,gb_ON302938_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_001333_2020_Segment_null_Host_Human,gb_MT950193_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_IND_GBRC356_2020_Segment_null_Host_Human)Node208,gb_OU268932_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_FR_UHB_727106401_2021_Segment_null_Host_Human,gb_OU390430_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU390430_Segment_null_Host_Human,gb_FR995280_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR995280_Segment_null_Host_Human,gb_OU267592_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_ZH_UZH_IMV_3ba48e5b_2021_Segment_null_Host_Human,gb_OU272854_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU272854_Segment_null_Host_Human,gb_MW906314_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_QDX23318552_2021_Segment_null_Host_Human,gb_ON277761_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_035287_Nova1_2020_Segment_null_Host_Human,(gb_MW454526_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MA_MGH_02759_2020_Segment_null_Host_Human,gb_OA997793_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA997793_Segment_null_Host_Human)Node229,gb_OU290746_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU290746_Segment_null_Host_Human,(gb_OK251098_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_CDC_QDX26157988_2021_Segment_null_Host_Human,gb_OU029630_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU029630_Segment_null_Host_Human)Node197,gb_OU274124_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU274124_Segment_null_Host_Human,gb_OU225341_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU225341_Segment_null_Host_Human,gb_MW276287_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_215_2020_Segment_null_Host_Human,gb_OA995518_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995518_Segment_null_Host_Human,gb_FR994707_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR994707_Segment_null_Host_Human,(gb_MW420116_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2012080415_2020_Segment_null_Host_Human,gb_OU104213_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU104213_Segment_null_Host_Human)Node183,gb_MT846570_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WI_UW_882_2020_Segment_null_Host_Human,gb_MT952698_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_1044_2020_Segment_null_Host_Human,gb_OU024385_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU024385_Segment_null_Host_Human,gb_OU252350_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU252350_Segment_null_Host_Human,gb_MZ184434_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MO_CDC_ASC210035500_2021_Segment_null_Host_Human,(gb_FR999121_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR999121_Segment_null_Host_Human,gb_OU576021_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_VD_CHUV_GEN2996_2020_Segment_null_Host_Human)Node172,gb_MT322421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0043_2020_Segment_null_Host_Human,gb_OV913287_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV913287_Segment_null_Host_Human,gb_MZ003092_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_LC0038925_2021_Segment_null_Host_Human,gb_OU210490_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU210490_Segment_null_Host_Human,gb_OA967275_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA967275_Segment_null_Host_Human,gb_HG993106_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_HG993106_Segment_null_Host_Human,gb_OU273480_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU273480_Segment_null_Host_Human,gb_MZ554874_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WV_CDC_LC0085488_2021_Segment_null_Host_Human,gb_OU301466_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU301466_Segment_null_Host_Human,gb_MW309487_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_BPHL_2224_2020_Segment_null_Host_Human,gb_OU008296_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_VS_ETHZ_320412_2020_Segment_null_Host_Human,gb_MW155434_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC14008_2020_Segment_null_Host_Human,gb_OU020185_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU020185_Segment_null_Host_Human,gb_OU035989_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU035989_Segment_null_Host_Human,gb_ON280826_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_003693_Nova3_2021_Segment_null_Host_Human,gb_OU190475_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU190475_Segment_null_Host_Human,gb_OU066843_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU066843_Segment_null_Host_Human,gb_MZ291022_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC_STM_000070114_2021_Segment_null_Host_Human,gb_OA967943_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA967943_Segment_null_Host_Human,gb_MZ238488_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_ASC210058436_2021_Segment_null_Host_Human,gb_OU019674_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU019674_Segment_null_Host_Human,(gb_MZ244930_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_ASC210061995_2021_Segment_null_Host_Human,gb_OM739161_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_SouthAfrica_NHLS_UCT_GS__3567_2020_Segment_null_Host_Human)Node44,(gb_OU814196_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU814196_Segment_null_Host_Human,gb_OK462941_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG1007867_2020_Segment_null_Host_Human)Node40,gb_OA981929_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA981929_Segment_null_Host_Human,gb_OD982282_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD982282_Segment_null_Host_Human,gb_OU087705_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU087705_Segment_null_Host_Human,gb_OU214156_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU214156_Segment_null_Host_Human,gb_OU423245_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU423245_Segment_null_Host_Human,gb_MZ010029_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC__IBX222127246001_2020_Segment_null_Host_Human,gb_MW493810_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NYP_WCM__COVSUBJ_0428_1_P_2020_Segment_null_Host_Human,gb_OU230352_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU230352_Segment_null_Host_Human,(gb_OU562760_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU562760_Segment_null_Host_Human,gb_OU104798_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU104798_Segment_null_Host_Human)Node60,gb_OU205782_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU205782_Segment_null_Host_Human,gb_OV019311_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV019311_Segment_null_Host_Human,gb_OU011524_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU011524_Segment_null_Host_Human,gb_MW154354_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC7460_2020_Segment_null_Host_Human,gb_MZ906899_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG494842_2020_Segment_null_Host_Human,gb_MZ448861_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NYI_NA_20_213_2020_Segment_null_Host_Human,gb_OA965381_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA965381_Segment_null_Host_Human,gb_OU807087_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU807087_Segment_null_Host_Human,gb_OU019355_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU019355_Segment_null_Host_Human,(gb_MZ373654_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2104527764_2020_Segment_null_Host_Human,(gb_OA996580_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA996580_Segment_null_Host_Human,gb_OU029547_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU029547_Segment_null_Host_Human,gb_OB983700_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB983700_Segment_null_Host_Human,gb_OB985514_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB985514_Segment_null_Host_Human,gb_OB989874_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB989874_Segment_null_Host_Human,gb_OA982829_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA982829_Segment_null_Host_Human,gb_OU793053_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU793053_Segment_null_Host_Human,gb_OA998641_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA998641_Segment_null_Host_Human,gb_OB988928_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB988928_Segment_null_Host_Human,gb_OB989421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB989421_Segment_null_Host_Human)Node134)Node132,gb_OU090858_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU090858_Segment_null_Host_Human,(gb_OD912519_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD912519_Segment_null_Host_Human,gb_OD995901_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD995901_Segment_null_Host_Human)Node115,gb_OA975662_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA975662_Segment_null_Host_Human,gb_FR994903_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR994903_Segment_null_Host_Human,gb_MW923954_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_JEBM_2020_Segment_null_Host_Human,gb_OL467710_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV__2_human_USA_hCoV_19_USA_ID_IVREF_648181_2020_2020_Segment_null_Host_Human,gb_OU250567_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU250567_Segment_null_Host_Human,gb_OA980091_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA980091_Segment_null_Host_Human,gb_OA974966_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA974966_Segment_null_Host_Human,gb_MZ255666_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_CDC_ASC210016050_2021_Segment_null_Host_Human,(gb_OV904507_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV904507_Segment_null_Host_Human,gb_MW115079_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_DSHS_0335_2020_Segment_null_Host_Human)Node88,gb_OM461422_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AR_UNM_2111600000291_2021_Segment_null_Host_Human,gb_OU183500_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU183500_Segment_null_Host_Human,gb_MZ535946_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_QDX26257498_2021_Segment_null_Host_Human,gb_MZ030338_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_CDC_QDX23718515_2021_Segment_null_Host_Human,gb_OK466489_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG974276_2020_Segment_null_Host_Human,(gb_MT499180_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_1205_2020_Segment_null_Host_Human,gb_OU012300_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU012300_Segment_null_Host_Human)Node93,(gb_MZ373637_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2104498937_2020_Segment_null_Host_Human,gb_OD932906_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD932906_Segment_null_Host_Human)Node97,(gb_MW064719_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_QDX_704_2020_Segment_null_Host_Human,gb_MW064587_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_GA_QDX_578_2020_Segment_null_Host_Human)Node101,(gb_MW154490_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC9248_2020_Segment_null_Host_Human,gb_OA980697_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA980697_Segment_null_Host_Human,gb_OA971202_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA971202_Segment_null_Host_Human)Node104)",
+  "tree_tags": {
+   "REFERENCE": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_MW738818_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_DSHS_3243_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505712068458277,
+    [],
+    []
+   ],
+   "gb_MW932521_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_PA_CDC_STM_000046281_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001506079683840152,
+    [],
+    []
+   ],
+   "gb_MZ075487_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_ASC210048203_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node202": [
+    "Reference",
+    true,
+    0.001505069231393438,
+    [],
+    []
+   ],
+   "gb_OB984669_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB984669_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506079545942027,
+    [],
+    []
+   ],
+   "gb_OB987670_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB987670_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505459915092992,
+    [],
+    []
+   ],
+   "gb_OB982473_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB982473_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_ON302938_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_001333_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505947116339097,
+    [],
+    []
+   ],
+   "gb_MT950193_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_IND_GBRC356_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506604188024995,
+    [],
+    []
+   ],
+   "Node208": [
+    "Example1",
+    true,
+    0.001505261705181827,
+    [],
+    []
+   ],
+   "gb_OU268932_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_FR_UHB_727106401_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505204686451879,
+    [],
+    []
+   ],
+   "gb_OU390430_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU390430_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505476801840779,
+    [],
+    []
+   ],
+   "gb_FR995280_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR995280_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505399170952984,
+    [],
+    []
+   ],
+   "gb_OU267592_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_ZH_UZH_IMV_3ba48e5b_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504853248230209,
+    [],
+    []
+   ],
+   "gb_OU272854_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU272854_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505314634630048,
+    [],
+    []
+   ],
+   "gb_MW906314_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_CDC_QDX23318552_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001507881859455784,
+    [],
+    []
+   ],
+   "gb_ON277761_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_035287_Nova1_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504862800716808,
+    [],
+    []
+   ],
+   "gb_MW454526_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MA_MGH_02759_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OA997793_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA997793_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00150608565676153,
+    [],
+    []
+   ],
+   "Node229": [
+    "Example1",
+    true,
+    0.001505503205852971,
+    [],
+    []
+   ],
+   "gb_OU290746_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU290746_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504210087844406,
+    [],
+    []
+   ],
+   "gb_OK251098_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_CDC_QDX26157988_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OU029630_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU029630_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001506615582273894,
+    [],
+    []
+   ],
+   "Node197": [
+    "Reference",
+    true,
+    0.001505044306926723,
+    [],
+    []
+   ],
+   "gb_OU274124_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU274124_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505376645367153,
+    [],
+    []
+   ],
+   "gb_OU225341_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU225341_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001512089939759747,
+    [],
+    []
+   ],
+   "gb_MW276287_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_215_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505470822428833,
+    [],
+    []
+   ],
+   "gb_OA995518_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA995518_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001509074932695825,
+    [],
+    []
+   ],
+   "gb_FR994707_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR994707_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505367384237187,
+    [],
+    []
+   ],
+   "gb_MW420116_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2012080415_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OU104213_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU104213_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001553302122481217,
+    [],
+    []
+   ],
+   "Node183": [
+    "",
+    true,
+    0.001505470836661898,
+    [],
+    []
+   ],
+   "gb_MT846570_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WI_UW_882_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505787129918218,
+    [],
+    []
+   ],
+   "gb_MT952698_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_1044_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505063623368409,
+    [],
+    []
+   ],
+   "gb_OU024385_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU024385_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505390852425653,
+    [],
+    []
+   ],
+   "gb_OU252350_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU252350_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.00150551847267446,
+    [],
+    []
+   ],
+   "gb_MZ184434_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_MO_CDC_ASC210035500_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505856770892425,
+    [],
+    []
+   ],
+   "gb_FR999121_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR999121_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001507678099246852,
+    [],
+    []
+   ],
+   "gb_OU576021_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_VD_CHUV_GEN2996_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node172": [
+    "Example1",
+    true,
+    0.001504606692757316,
+    [],
+    []
+   ],
+   "gb_MT322421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_DCLS_0043_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OV913287_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV913287_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001506144892579021,
+    [],
+    []
+   ],
+   "gb_MZ003092_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_LC0038925_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505552729959603,
+    [],
+    []
+   ],
+   "gb_OU210490_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU210490_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505663445636671,
+    [],
+    []
+   ],
+   "gb_OA967275_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA967275_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505063624896852,
+    [],
+    []
+   ],
+   "gb_HG993106_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_HG993106_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505390850894764,
+    [],
+    []
+   ],
+   "gb_OU273480_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU273480_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505947116339191,
+    [],
+    []
+   ],
+   "gb_MZ554874_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_WV_CDC_LC0085488_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505663445636608,
+    [],
+    []
+   ],
+   "gb_OU301466_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU301466_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505133946605259,
+    [],
+    []
+   ],
+   "gb_MW309487_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_FL_BPHL_2224_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504497092899396,
+    [],
+    []
+   ],
+   "gb_OU008296_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_hCoV_19_Switzerland_VS_ETHZ_320412_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505947045630807,
+    [],
+    []
+   ],
+   "gb_MW155434_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC14008_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505652932963548,
+    [],
+    []
+   ],
+   "gb_OU020185_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU020185_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505063624898056,
+    [],
+    []
+   ],
+   "gb_OU035989_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU035989_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001506026504370769,
+    [],
+    []
+   ],
+   "gb_ON280826_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_FRA_IHUCOVID_003693_Nova3_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001511276792193366,
+    [],
+    []
+   ],
+   "gb_OU190475_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU190475_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505684607149946,
+    [],
+    []
+   ],
+   "gb_OU066843_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU066843_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504169030997705,
+    [],
+    []
+   ],
+   "gb_MZ291022_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC_STM_000070114_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505663445734245,
+    [],
+    []
+   ],
+   "gb_OA967943_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA967943_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505947116339602,
+    [],
+    []
+   ],
+   "gb_MZ238488_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_ASC210058436_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505663446449579,
+    [],
+    []
+   ],
+   "gb_OU019674_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU019674_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505947115624629,
+    [],
+    []
+   ],
+   "gb_MZ244930_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NJ_CDC_ASC210061995_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OM739161_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_SouthAfrica_NHLS_UCT_GS__3567_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504082142506942,
+    [],
+    []
+   ],
+   "Node44": [
+    "",
+    true,
+    0.001505106135818816,
+    [],
+    []
+   ],
+   "gb_OU814196_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU814196_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506615600689911,
+    [],
+    []
+   ],
+   "gb_OK462941_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG1007867_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node40": [
+    "Example1",
+    true,
+    0.001505375160378678,
+    [],
+    []
+   ],
+   "gb_OA981929_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA981929_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504210086410893,
+    [],
+    []
+   ],
+   "gb_OD982282_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD982282_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504210086347988,
+    [],
+    []
+   ],
+   "gb_OU087705_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU087705_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505947116339616,
+    [],
+    []
+   ],
+   "gb_OU214156_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU214156_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504497009846531,
+    [],
+    []
+   ],
+   "gb_OU423245_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU423245_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504497009943913,
+    [],
+    []
+   ],
+   "gb_MZ010029_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CDC__IBX222127246001_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505947116339492,
+    [],
+    []
+   ],
+   "gb_MW493810_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NYP_WCM__COVSUBJ_0428_1_P_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505537114955223,
+    [],
+    []
+   ],
+   "gb_OU230352_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU230352_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505287474495379,
+    [],
+    []
+   ],
+   "gb_OU562760_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU562760_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OU104798_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU104798_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001506055044537688,
+    [],
+    []
+   ],
+   "Node60": [
+    "",
+    true,
+    0.00150549654586937,
+    [],
+    []
+   ],
+   "gb_OU205782_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU205782_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505947045657074,
+    [],
+    []
+   ],
+   "gb_OV019311_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV019311_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504497092872996,
+    [],
+    []
+   ],
+   "gb_OU011524_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU011524_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505063637325531,
+    [],
+    []
+   ],
+   "gb_MW154354_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC7460_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505001613441054,
+    [],
+    []
+   ],
+   "gb_MZ906899_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG494842_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504210086345325,
+    [],
+    []
+   ],
+   "gb_MZ448861_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_NYI_NA_20_213_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001509171877877263,
+    [],
+    []
+   ],
+   "gb_OA965381_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA965381_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505947116339598,
+    [],
+    []
+   ],
+   "gb_OU807087_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU807087_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504497022199521,
+    [],
+    []
+   ],
+   "gb_OU019355_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU019355_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505737213819244,
+    [],
+    []
+   ],
+   "gb_MZ373654_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2104527764_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OA996580_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA996580_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506981449284704,
+    [],
+    []
+   ],
+   "gb_OU029547_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU029547_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506129245695119,
+    [],
+    []
+   ],
+   "gb_OB983700_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB983700_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00150699033373467,
+    [],
+    []
+   ],
+   "gb_OB985514_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB985514_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001507227912474713,
+    [],
+    []
+   ],
+   "gb_OB989874_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB989874_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506111398496044,
+    [],
+    []
+   ],
+   "gb_OA982829_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA982829_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506887656945272,
+    [],
+    []
+   ],
+   "gb_OU793053_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU793053_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506887656945267,
+    [],
+    []
+   ],
+   "gb_OA998641_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA998641_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OB988928_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB988928_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506929504463838,
+    [],
+    []
+   ],
+   "gb_OB989421_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OB989421_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001507351211903342,
+    [],
+    []
+   ],
+   "Node134": [
+    "Example1",
+    true,
+    0.001506339499222972,
+    [],
+    []
+   ],
+   "Node132": [
+    "Example1",
+    true,
+    0.001505803624603462,
+    [],
+    []
+   ],
+   "gb_OU090858_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU090858_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505538406001012,
+    [],
+    []
+   ],
+   "gb_OD912519_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD912519_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OD995901_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD995901_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504623177387541,
+    [],
+    []
+   ],
+   "Node115": [
+    "Reference",
+    true,
+    0.001504647676482282,
+    [],
+    []
+   ],
+   "gb_OA975662_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA975662_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505947116369681,
+    [],
+    []
+   ],
+   "gb_FR994903_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_FR994903_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00150594711636968,
+    [],
+    []
+   ],
+   "gb_MW923954_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_JEBM_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001504815179286483,
+    [],
+    []
+   ],
+   "gb_OL467710_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV__2_human_USA_hCoV_19_USA_ID_IVREF_648181_2020_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.003020652096891418,
+    [],
+    []
+   ],
+   "gb_OU250567_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU250567_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505591882803241,
+    [],
+    []
+   ],
+   "gb_OA980091_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA980091_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00150594711633921,
+    [],
+    []
+   ],
+   "gb_OA974966_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA974966_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.00150594711633921,
+    [],
+    []
+   ],
+   "gb_MZ255666_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AZ_CDC_ASC210016050_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505601786954832,
+    [],
+    []
+   ],
+   "gb_OV904507_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OV904507_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.00150607958781493,
+    [],
+    []
+   ],
+   "gb_MW115079_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TX_DSHS_0335_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "Node88": [
+    "",
+    true,
+    0.001505503218024833,
+    [],
+    []
+   ],
+   "gb_OM461422_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_AR_UNM_2111600000291_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505663458002069,
+    [],
+    []
+   ],
+   "gb_OU183500_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU183500_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504210098604,
+    [],
+    []
+   ],
+   "gb_MZ535946_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CO_CDC_QDX26257498_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505947116339855,
+    [],
+    []
+   ],
+   "gb_MZ030338_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_VA_CDC_QDX23718515_2021_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001505947116339856,
+    [],
+    []
+   ],
+   "gb_OK466489_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_TG974276_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505288372860257,
+    [],
+    []
+   ],
+   "gb_MT499180_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_CZB_1205_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OU012300_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OU012300_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001503803646474234,
+    [],
+    []
+   ],
+   "Node93": [
+    "",
+    true,
+    0.001505223876607541,
+    [],
+    []
+   ],
+   "gb_MZ373637_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_UT_UPHL_2104498937_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OD932906_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OD932906_Segment_null_Host_Human": [
+    "Reference",
+    false,
+    0.001504492941906818,
+    [],
+    []
+   ],
+   "Node97": [
+    "",
+    true,
+    0.001505223876607541,
+    [],
+    []
+   ],
+   "gb_MW064719_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_CA_QDX_704_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_MW064587_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_USA_GA_QDX_578_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505235358924959,
+    [],
+    []
+   ],
+   "Node101": [
+    "Example1",
+    true,
+    0.001505250687616013,
+    [],
+    []
+   ],
+   "gb_MW154490_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_SARS_CoV_2_human_AUS_VIC9248_2020_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0,
+    [],
+    []
+   ],
+   "gb_OA980697_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA980697_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001506058748770672,
+    [],
+    []
+   ],
+   "gb_OA971202_Organism_Severe_acute_respiratory_syndrome_coronavirus_2_Strain_Name_UNKNOWN_OA971202_Segment_null_Host_Human": [
+    "Example1",
+    false,
+    0.001505810419733798,
+    [],
+    []
+   ],
+   "Node104": [
+    "Example1",
+    true,
+    0.001504941339824105,
+    [],
+    []
+   ]
+  },
+  "prime-properties": [
+   "The number of unique amino-acids occurring at that site",
+   "Omnibus p-value (any property is important)",
+   "Log likelihood when there is no effect of Factor I bipolar",
+   "Log likelihood when there is no effect of Factor II secondary structure",
+   "Log likelihood when there is no effect of Factor III volume",
+   "Log likelihood when there is no effect of Factor IV composition",
+   "Log likelihood when there is no effect of Factor V charge"
+  ],
+  "bgm": [
+   [
+    2,
+    3,
+    0.1040938867757042,
+    0.1396549381826002,
+    0.2437488249583044,
+    1,
+    1,
+    0
+   ],
+   [
+    2,
+    28,
+    0.1358852154360091,
+    0.1116429982187173,
+    0.2475282136547264,
+    1,
+    1,
+    0
+   ],
+   [
+    2,
+    70,
+    0.1286961608333796,
+    0.1125056847665527,
+    0.2412018455999323,
+    1,
+    1,
+    0
+   ],
+   [
+    3,
+    28,
+    0.129085215523256,
+    0.11688194628834,
+    0.2459671618115959,
+    1,
+    1,
+    0
+   ],
+   [
+    3,
+    70,
+    0.1159588475557088,
+    0.1236819462010931,
+    0.2396407937568019,
+    1,
+    1,
+    0
+   ],
+   [
+    28,
+    70,
+    0.1337200414154971,
+    0.1027986486550438,
+    0.2365186900705409,
+    1,
+    1,
+    0
+   ]
+  ]
+ }
+}

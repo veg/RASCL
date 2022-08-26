@@ -6,6 +6,7 @@ torque*
 
 data/results
 
+results/
 results/TEST
 
 data/TEST/*

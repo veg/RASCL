@@ -28,6 +28,7 @@ sed -i 's/\//_/g' ${OUTPUT}.bk
 echo ""
 echo "Running gawk to clean up header information"
 gawk '{ if ($0 ~ "^>") {b=gensub(/>(.+)\|(EPI_ISL_|epi_isl_)([0-9]+)\|(.+)/, ">epi_isl_\\3/\\1","g"); print b;} else print;}' ${OUTPUT}.bk > $OUTPUT
+#awk '{ if ($0 ~ "^>") {b=gensub(/>(.+)\|(EPI_ISL_|epi_isl_)([0-9]+)\|(.+)/, ">epi_isl_\\3/\\1","g"); print b;} else print;}' ${OUTPUT}.bk > $OUTPUT
 
 echo ""
 echo "Removing backup .bk files"

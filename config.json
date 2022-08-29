@@ -5,6 +5,8 @@
   "max_background":"200",
   "max_query":"500",
   "threshold_query":"0.0005",
-  "threshold_background":"0.001"
+  "threshold_background":"0.001",
+  "raxml_ng":"raxml-ng",
+  "cleaner":"scripts/cleaner.linux.sh"
   
 }

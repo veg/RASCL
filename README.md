@@ -1,19 +1,19 @@
-## RASCL: RAPID ASSESSMENT OF SELECTION IN CLADES THROUGH MOLECULAR SEQUENCE ANALYSIS
+## RASCL: Rapid Assessment of Selection in Clades through molecular Sequence Analysis
 
 ### Overview
-This application is designed to use molecular sequence data from genotypically distinct viral lineages to identify distinguishing features and evolution within lineages. Using whole genome sequences, a "query" set of sequences will be compared to against a globally diverse set of "background" sequences. The background data set contains globally circulating viral sequences, and the query data set is the set of sequences you want to compare. The application uses a number of open-source tools, as well as selection analysis tools from [HyPhy](hyphy.org), and assembles the results from the analysis into JSON files which can then be visualized with our full feature [Observable notebook]. We provide a list of selected results for several SARS-CoV-2 clades at (https://observablehq.com/@aglucaci/rascl)
+This application is designed to use molecular sequence data from genotypically distinct viral lineages to identify distinguishing features and evolution within lineages. Using whole genome sequences, a "query" set of sequences will be compared to against a globally diverse set of "background" sequences. The background data set contains globally circulating viral sequences, and the query data set is the set of sequences you want to compare. The application uses a number of open-source tools, as well as selection analysis tools from [HyPhy](hyphy.org), and assembles the results from the analysis into JSON files which can then be visualized with our full feature [Observable notebook](https://observablehq.com/@aglucaci/rascl_latest). We provide a list of selected results for several SARS-CoV-2 clades at (https://observablehq.com/@aglucaci/rascl)
 
 ### Installation and dependencies (Conda-based)
-#### Environment dependencies
-This application is currently designed to run in an HPC environment.
+#### Environment dependencies:
 
-There is an assumption that the freely available [Anaconda](https://anaconda.org/) software is installed on your machine.
+There is an assumption that the freely available [Anaconda](https://anaconda.org/) software is installed on your machine. This application is currently designed to run in an HPC environment.
+
 
 #### To install (Conda-based) -- Steps necessary to complete before running
 1. `git clone https://github.com/veg/RASCL.git`
 2. `cd RASCL`
 3. `conda env create -f environment.yml`.  This will create a conda environment called (RASCL) with the necessary dependencies.
-4. At this point, run `conda activate RASCL` and your environment will be ready to go.
+4. after package install: `conda activate RASCL`
 
 #### Configuration settings -- Steps necessary to complete before running
 
@@ -21,17 +21,16 @@ The user input data (which consists of the clade of interest downloaded as a FAS
 
 The `Label` variable within the `config.json` corresponds to the label of your viral clade of interest (e.g. "B.1.1.7") and will be used for annotation downstream. 
 
-From your working directory:
+From within the `RASCL` directory:
 
-1. `mkdir data/{name}`
+1. `mkdir data/{name}` -- The `{name}` you pick does not matter.
 2. Place your viral clade of interest fasta file within the `data/{name}` subdirectory.
-- The `{name}` you pick does not matter. Recall, in our test-run our `Label` is `B.1.1.7`, and we put our input files in the `./data/Example1` directory.
+- Recall, in our test-run `Label` is `B.1.1.7` and and we put our input files in the `./data/Example1` directory (`Example1` would be `{name}`).
 3. In the `config.json` change the following:
 - The `Label` variable to correspond to a tag for your clade of interest (e.g. "B.1.1.7"). Make sure to include the `"` around your label. 
 - The `Background_WholeGenomeSeqs` variable to correspond to your query whole genome sequences (e.g. "Example1/Background-preAlpha.fasta"). Include the relative path as if you were within the `./data/` directory.
 - The `Query_WholeGenomeSeqs` variable to correspond to your query whole genome sequences (e.g. "Example1/Query-Alpha.fasta"). Include the relative path as if you were within the `./data/` directory.
-- The `cleaner` variable corresponds to bash script containing commands necessary to parse the headers of the fasta. Within the `./scripts` directory, there are two files, one with `linux` (defualt), and one with `MBP` in the name. change this file according to your OS.
-
+- The `cleaner` variable corresponds to bash script containing commands necessary to parse the headers of the fasta. Within the `./scripts/` directory, there are two files, one with `linux` (`scripts/cleaner.linux.sh` -- defualt), and one with `MBP` in the name. change this file according to your OS.
 
 4. The `cluster.json` file can be modified for your computing environment. If you want to use more cores, adjust the values in this file. This can be used to distribute jobs to run across the cluster and to specify a queue. The `cluster` variable refers to the workload manager. The `nodes` variable is a request for resource allocation from the server, in this case it refers to the number of nodes. The `ppn` variable is a request for resource allocation from the server, in this case it refers to the number of processors per node. The `name` variable is a specification to submit the jobs for the RASCL application to a specific queue. These have different names and priorities, please refer to your local system administrator for more information. We have added an additional variable `walltime` which is a request for a certain period of time for resource allocation from the server.
 
@@ -44,36 +43,57 @@ At this point, your configuration settings are set.
 #### Running the analysis.
 
 When in the `RASCL` working directory:
-1. `bash ./run_HPC.sh` for running on a high performance computing server
-2. `bash ./run_LOCAL.sh` for running on your local machine
 
-The results of running this application will be placed in the `results/{Label}` subdirectory. This will contain a new folder with the name of of your clade i.e. the `"Label"` variable from the `config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.
+Running in a high performance computing server:
 
-At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, RELAX, and Contrast-FEL, etc) will be aggregated into two JSON files (Summary.json and Annotation.json) for an Observable notebook to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on viral genes within the clade of interest.
+`bash ./run_HPC.sh`
 
-### Conda-independent Installation (utilizes a python `venv`, unless you want to install system-wide, then omit step 1)
+Running on your local machine
+
+`bash ./run_LOCAL.sh`
+
+The results of running this application will be placed in the `results/{Label}` subdirectory (this subdir will be made by the analysis, you do not need to make this subdir). This will contain a new folder with the name of of your clade i.e. the `"Label"` variable from the `config.json`. We will store all intermediate files and JSON results in this subdirectory. However, they are not tracked by this GitHub repository.
+
+At the conclusion of the run, the selection output files (BGM, MEME, FEL, SLAC, BUSTED[S], PRIME, FADE, RELAX, and Contrast-FEL, etc) will be aggregated into two JSON files (Summary.json and Annotation.json) for an Observable notebook to ingest. At this point, the user can use our visualizations to investigate the nature and extent of selective forces acting on viral genes within the clade of interest ([Observable Notebook](https://observablehq.com/@spond/sars-cov-2-clades)).
+
+### Conda-independent Installation (utilizes a python `venv`, unless you want to install system-wide, then omit steps 3 and 4, but you still need python version 3.8)
 #### Environment dependencies
 1. `git clone https://github.com/veg/RASCL.git`
 2. `cd RASCL`
-2. `python3.8 -m venv tester` Note: (requires python3.8 to run, even if you dont want to use a `venv` you need python 3.8)
-3. `source tester/bin/activate
-4. `pip install biopython==1.77`
-5. `pip install snakemake==7.9.0`
-6. `pip install Cython==0.29.32`
-7. `pip install bioext=0.19.7`
-8. `git clone --recursive https://github.com/amkozlov/raxml-ng` (follow developer install directions)
+3. `python3.8 -m venv tester` Note: (requires python3.8 to run, even if you dont want to use a `venv` you need python 3.8)
+4. `source tester/bin/activate
+5. `pip install biopython==1.77`
+6. `pip install snakemake==7.9.0`
+7. `pip install Cython==0.29.32`
+8. `pip install bioext=0.19.7`
+9. `git clone --recursive https://github.com/amkozlov/raxml-ng` (follow developer install directions)
   - requies version `1.1.0`
-9. `git clone https://github.com/veg/tn93.git` (follow developer install directions)
+10. `git clone https://github.com/veg/tn93.git` (follow developer install directions)
   - requires version `1.0.9`
-10. `git clone https://github.com/veg/hyphy.git` (follow developer install directions)
+11. `git clone https://github.com/veg/hyphy.git` (follow developer install directions)
   - requies version `2.5.41`
-11. `brew install gnu-sed`
 
-Note: Change the `raxml_ng` variable within the `config.json`, which corresponds to the full path to the `raxml-ng` executable that was installed, it should look something like: `/usr/path/to/raxml-ng/bin/raxml-ng` for local runs, as well as the `cleaner` variable to either the file containing `linux` (defualt), or to the one with `MBP`, depending on your OS.
+#### Configuration settings -- Steps necessary to complete before running
+
+Within the `config.json`:
+
+- Change the `raxml_ng` variable, which corresponds to the full path to the `raxml-ng` executable that was installed, it should look something like: `/usr/path/to/raxml-ng/bin/raxml-ng` for local runs
+- Change the `cleaner` variable to either the file containing `linux` (`scripts/cleaner.linux.sh` -- defualt), or to the one with `MBP`, depending on your OS.
 
 ### Running the analysis
 
-We provide an example HPC bash script to run the analysis in `run_Silverback.sh` which is designed to run on the Temple University computing cluster. This file can be modified to run in your own computing environment. In the `cluster.json` specify the name of the queue on your system, along with the computing resources to be used.
+When in the `RASCL` working directory:
+
+Running in a high performance computing server:
+
+`bash ./run_HPC.sh`
+
+Running on your local machine
+
+`bash ./run_LOCAL.sh`
+
+
+### Errors
 
 Note, that in some cases not all of the pipeline steps will complete (e.g. insufficient sequences to run analyses on all gene segments). In this case please run, from the top RASCL directory, (with the value of `Label` from `config.json`, and `WD` corresponding to the working directory.
 
@@ -81,17 +101,18 @@ Note, that in some cases not all of the pipeline steps will complete (e.g. insuf
 bash scripts/process_json.sh {WD} {Label}
 ```
 
-The results of the analysis will be placed into the `results/Label` directory as `{Label}_summary.json` and `{Label}_annotation.json`.
+### Results
 
-See `Visualization` section for next steps on how to use our interactive notebook.
+The results of the analysis will be placed into the `results/{name}/` directory as `{Label}_summary.json` and `{Label}_annotation.json`.
 
 ### Visualization
 
-At the completion of the pipeline, the JSON outputs (Summary.json and Annotation.json) will be generated. These can be ingested into our full feature [Observable Notebook](https://observablehq.com/@aglucaci/rascl_latest). We suggest that users make a free account on ObservableHQ and fork this notebook, which allows the user to point the notebook to their data.
+At the completion of the pipeline, the JSON outputs (`{Label}`_summary.json and `{Label}`_Annotation.json) will be generated. These can be ingested into our full feature [Observable Notebook](https://observablehq.com/@aglucaci/rascl_latest). We suggest that users make a free account on ObservableHQ and fork this notebook, which allows the user to point the notebook to their data.
+
 
 The version of the notebook at https://observablehq.com/@spond/sars-cov-2-clades allows one to upload summary and annotation JSON files.
 
-If you get an error about `tree_tags`, go to the `species` variable line and change it to the gene you analyzed.
+If you get an error about `tree_tags` when using https://observablehq.com/@spond/sars-cov-2-clades, go to the `species` variable line within the notebook and change it to the gene you analyzed. If a `TypeError: Cannot convert undefined or null to object` error arises, that means that the selection analyses did not find any significant sites.
 
 #### Exploring results with our interactive notebook
 
@@ -112,6 +133,8 @@ The `config.json` file also contains a number of advanced features corresponding
 #### Advanced Configuration for HPC environment and downsampling
 
 If you want to use more cores, adjust the values in the `cluster.json` file. This can be used to distribute jobs to run across the cluster and to specify a queue. The `cluster` variable refers to the workload manager. The `nodes` variable is a request for resource allocation from the server, in this case it refers to the number of nodes. The `ppn` variable is a request for resource allocation from the server, in this case it refers to the number of processors per node. The `name` variable is a specification to submit the jobs for the RASCL application to a specific queue. These have different names and priorities, please refer to your local system administrator for more information. We have added an additional variable `walltime` which is a request for a certain period of time for resource allocation from the server. We provide an example HPC bash script to run the analysis in `run_HPC.sh` which is designed to run on the Temple University computing cluster. This file can be modified to run in your own computing environment. In the `cluster.json` specify the name of the queue on your system, along with the computing resources to be used.
+
+We provide an example HPC bash script to run the analysis in `run_Silverback.sh` which is designed to run on the Temple University computing cluster. This file can be modified to run in your own computing environment. In the `cluster.json` specify the name of the queue on your system, along with the computing resources to be used.
 
 #### Testing on a singular gene 
 If you want to run the script on a singular gene instead of the entire SARS-CoV-2 genome, you can go into the Snakemake file (`Snakefile`), comment out line 58, 59, 60, and 61. Uncomment out line 64 and input the gene that you want to run (from the `gene` list).

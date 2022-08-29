@@ -34,6 +34,12 @@ print("We are operating out of base directory:", BASEDIR)
 # Which clades are you analyzing?
 LABEL = config["Label"]
 
+# User variable for cleaner script (pulled from the config file)
+cleaner=config["cleaner"]
+
+# User variable for RAXML-NG (pulled from the config file)
+raxml_ng=config["raxml_ng"]
+
 # Get this information from the config.
 Query_WholeGenomeSeqs = config["Query_WholeGenomeSeqs"]
 Background_WholeGenomeSeqs = config["Background_WholeGenomeSeqs"]
@@ -125,7 +131,7 @@ rule cleaner_query:
     output:
         output = os.path.join(OUTDIR, Input_Query_WholeGenomeSeqs_Basename + ".fa")
     shell:
-       "bash scripts/cleaner.sh {input.input} {output.output}"
+       "bash {cleaner} {input.input} {output.output}"
 #end rule
 
 rule cleaner_background:
@@ -134,7 +140,7 @@ rule cleaner_background:
     output:
         output = os.path.join(OUTDIR, Input_Background_WholeGenomeSeqs_Basename + ".fa")
     shell:
-       "bash scripts/cleaner.sh {input.input} {output.output}"
+       "bash {cleaner} {input.input} {output.output}"
 #end rule
 
 #==============================================================================
@@ -266,7 +272,7 @@ rule raxml:
     output:
         combined_tree = os.path.join(OUTDIR, "{GENE}.combined.fas.raxml.bestTree")
     shell:
-        "raxml-ng --model GTR --msa {input.combined_fas} --threads {params.THREADS} --tree pars{{3}} --force"
+        "{raxml_ng} --model GTR --msa {input.combined_fas} --threads {params.THREADS} --tree pars{{3}} --force"
 #end rule 
 
 rule annotate:

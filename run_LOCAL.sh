@@ -17,13 +17,13 @@ echo "Initialized --- "
 echo "Creating 'logs' directory"
 mkdir -p logs
 
-echo "Executing HPC Snakemake command"
+echo "Executing LOCAL Snakemake command"
 
 # Execute the Snakemake command
 snakemake \
       -s Snakefile \
       --cluster-config cluster.json \
-      --jobs 23 all \
+      --jobs 1 all \
       --rerun-incomplete \
       --keep-going \
       --reason \
